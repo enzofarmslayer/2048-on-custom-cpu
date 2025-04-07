@@ -1,0 +1,186 @@
+m255
+K4
+z2
+!s99 nomlopt
+!s11e vcom 2021.3 2021.07, Jul 13 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/enzcu445/TSEA83/2048/projekt_skal_mikro/simdir
+T_opt
+!s110 1744048333
+VQI_]Ql1>=ka`Rh`C`GJ7I2
+04 11 4 work uprogcpu_tb func 1
+=1-001b213b2c24-67f410cc-daf6c-2ff0d
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work -L work +acc
+tCvgOpt 0
+n@_opt
+OL;O;2021.3;73
+Epmem
+Z1 w1713431954
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z5 8../Mem/pMem.vhd
+Z6 F../Mem/pMem.vhd
+l0
+L6 1
+VHANjE`8e^GJmVUmc[m[]I3
+!s100 CRmFV1z:@0GC:HWWIh`Y30
+Z7 OL;C;2021.3;73
+32
+Z8 !s110 1744048330
+!i10b 1
+Z9 !s108 1744048330.000000
+Z10 !s90 ../uprogCPU.vhd|../Mem/uMem.vhd|../Mem/pMem.vhd|
+Z11 !s107 ../Mem/pMem.vhd|../Mem/uMem.vhd|../uprogCPU.vhd|
+!i113 0
+Z12 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+DEx4 work 4 pmem 0 22 HANjE`8e^GJmVUmc[m[]I3
+!i122 0
+l37
+Z13 L12 29
+Ve<ZU9IdIeK^<eIYX>Ph2C2
+!s100 _NHiUefA^cfh?ic?FcVfZ2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+Eumem
+Z14 w1713431961
+R2
+R3
+R4
+!i122 0
+R0
+Z15 8../Mem/uMem.vhd
+Z16 F../Mem/uMem.vhd
+l0
+L6 1
+VPo>TD0NXA5aM_?OQ`[27R0
+!s100 I?WaaiI51`<UPPUF=_MWe1
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+Abehavioral
+R2
+R3
+R4
+DEx4 work 4 umem 0 22 Po>TD0NXA5aM_?OQ`[27R0
+!i122 0
+l37
+R13
+V;Y?G6DV:kMl;`TP<FlRgN0
+!s100 Ghf5][^b_Llo>PA:>nWlS2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+Euprogcpu
+Z17 w1713439143
+R2
+R3
+R4
+!i122 0
+R0
+Z18 8../uprogCPU.vhd
+Z19 F../uprogCPU.vhd
+l0
+L6 1
+VbL1<lA]9iEP?HWh:0U09A1
+!s100 55Y98Z@3[WNO6QkKF<WUQ0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+Afunc
+R2
+R3
+R4
+DEx4 work 8 uprogcpu 0 22 bL1<lA]9iEP?HWh:0U09A1
+!i122 0
+l49
+L12 112
+VNNiDP[PmP^FWOdFhLPgVV0
+!s100 KPJhf6X]kgf7LJ78I`<4F0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+Euprogcpu_tb
+Z20 w1713437531
+R2
+R3
+R4
+!i122 1
+R0
+Z21 8../uprogCPU_tb.vhd
+Z22 F../uprogCPU_tb.vhd
+l0
+L5 1
+Vl@i2`LaQehJaUI5WB@o[80
+!s100 YG:kVYcN50b7ld30RjzV]1
+R7
+32
+R8
+!i10b 1
+R9
+Z23 !s90 ../uprogCPU_tb.vhd|
+Z24 !s107 ../uprogCPU_tb.vhd|
+!i113 0
+R12
+Afunc
+R2
+R3
+R4
+DEx4 work 11 uprogcpu_tb 0 22 l@i2`LaQehJaUI5WB@o[80
+!i122 1
+l23
+L8 33
+VITYiDIAjQGj_C>h_I41lF0
+!s100 m5Z8zzePPX^=<nE:Taf7A3
+R7
+32
+R8
+!i10b 1
+R9
+R23
+R24
+!i113 0
+R12
