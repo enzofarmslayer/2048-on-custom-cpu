@@ -1,4 +1,4 @@
-# //  ModelSim SE-64 2021.3 Jul 13 2021 Linux 4.18.0-553.40.1.el8_10.x86_64
+# //  ModelSim SE-64 2021.3 Jul 13 2021 Linux 4.18.0-553.47.1.el8_10.x86_64
 # //
 # //  Copyright 1991-2021 Mentor Graphics Corporation
 # //  All Rights Reserved.
@@ -12,9 +12,10 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 19:15:12 on Feb 26,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Start time: 12:27:21 on Apr 14,2025
+# ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in architecture body "PRET_CPU(behavioral)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "KBD_ENC(behavioral)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -26,23 +27,5 @@
 # Loading work.video_ram(behavioral)#1
 # Loading work.vga_motor(behavioral)#1
 # Loading work.char_rom(behavioral)#1
-add wave sim:/vga_lab_tb/uut/*
-run 40ms
-# ** Warning: NUMERIC_STD."<=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U3/U0b
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U2
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U2
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U3/U0b
-# End time: 19:25:09 on Feb 26,2025, Elapsed time: 0:09:57
-# Errors: 0, Warnings: 8
+# End time: 12:27:26 on Apr 14,2025, Elapsed time: 0:00:05
+# Errors: 0, Warnings: 0

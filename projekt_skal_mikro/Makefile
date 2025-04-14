@@ -1,11 +1,18 @@
 # Files in the project. Make sure the first file is the top module
-VHD = uprogCPU.vhd Mem/uMem.vhd Mem/pMem.vhd
+VHD = vga_test/vga_lab.vhd \
+      vga_test/kbd_enc.vhd \
+      vga_test/pret_cpu.vhd \
+      vga_test/video_ram.vhd \
+      vga_test/vga_motor.vhd \
+      vga_test/char_rom.vhd
+# uprogCPU.vhd Mem/uMem.vhd Mem/pMem.vhd
 
 # Design constraints file
 XDC = Basys3.xdc
 
 # Testbench file
-TBF = uprogCPU_tb.vhd
+#TBF = uprogCPU_tb.vhd
+#TBF = vga_lab_tb.vhd
 
 # Include Makefile utilities
 include /courses/TSEA83/bin/util.mk
