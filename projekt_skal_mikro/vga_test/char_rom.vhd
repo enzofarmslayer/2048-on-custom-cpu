@@ -36,7 +36,7 @@ begin
 	end process;
 	
 	rom_data <= (
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- space
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
@@ -44,7 +44,7 @@ begin
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
+
 		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
 		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
 		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
@@ -53,7 +53,7 @@ begin
 		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
+
 		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
 		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
@@ -72,7 +72,7 @@ begin
 		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- D
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
@@ -80,35 +80,35 @@ begin
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- E
+
+		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
+		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- F
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- G
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- H
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- C
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
@@ -116,62 +116,35 @@ begin
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- I
+
+		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
+		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- J
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- K
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- L
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- M
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- N
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- C
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- O
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
@@ -179,77 +152,104 @@ begin
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- P
+
+		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
+		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- Q
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- R
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- S
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- T
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- C
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- U
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
+		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- V
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- C
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
-		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  -- W
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",  
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"FFF",x"FFF",x"000",x"000",x"000",x"FFF",x"FFF",x"FFF",  -- A
+		x"FFF",x"000",x"000",x"FFF",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- B
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
+		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",  -- C
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
+		x"000",x"000",x"FFF",x"FFF",x"FFF",x"000",x"000",x"FFF",
+		x"FFF",x"000",x"000",x"000",x"000",x"000",x"FFF",x"FFF",
 		x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",x"FFF",
 		
 		x"F00",x"F00",x"FFF",x"FFF",x"FFF",x"F00",x"F00",x"FFF",  -- X

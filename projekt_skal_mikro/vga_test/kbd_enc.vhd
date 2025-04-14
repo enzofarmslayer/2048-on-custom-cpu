@@ -1,7 +1,4 @@
---------------------------------------------------------------------------------
--- KBD ENC
--- Version 1.1: 2016-02-16. Anders Nilsson
--- Version 2.0: 2023-01-12. Petter Kallstrom. Changelog: Remove everything that interprets the scancode
+
 -- Description:
 -- * Read bytes from a PS2 bus
 -- * Encode bytes into scancodes

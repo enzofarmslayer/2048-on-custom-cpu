@@ -112,21 +112,6 @@ begin
 	-- *  Hsync1                     *
 	-- *                             *
 	-- *******************************
-	-- process(clk) 
-	-- begin
-	-- 	if rising_edge(clk) then
-	-- 		if clear = '1' then	
-	-- 			Hsync1 <= '1'; 
-	-- 		elsif Clk25 = '1' then	
-	-- 			if (Xpixel1 >= 656 and Xpixel1 < 752) then
-	-- 				Hsync1 <= '0'; 
-	-- 			else
-	-- 				Hsync1 <= '1';
-	-- 			end if;
-	-- 		end if;
-	-- 	end if;
-	-- end process;
-
 	Hsync1 <= '0' when (Xpixel1 >= 656 and Xpixel1 < 752) else '1';
 
 	-- Vertical pixel counter
@@ -160,21 +145,6 @@ begin
 	-- *  Vsync1                     *
 	-- *                             *
 	-- *******************************
-	-- process(clk) 
-	-- begin
-	-- 	if rising_edge(clk) then
-	-- 		if clear = '1' then
-	-- 			Vsync1 <= '1'; -- Default inactive state
-	-- 		elsif Clk25 = '1' then	
-	-- 			if (Ypixel1 >= 490 and Ypixel1 < 492) then
-	-- 				Vsync1 <= '0'; -- Active low signal
-	-- 			else
-	-- 				Vsync1 <= '1';
-	-- 			end if;
-	-- 		end if;
-	-- 	end if;
-	-- end process;
-
 	Vsync1 <= '0' when (Ypixel1 >= 490 and Ypixel1 < 492) else '1';
 
 	-- Video blanking signal
@@ -184,30 +154,14 @@ begin
 	-- *  Blank1                     *
 	-- *                             *
 	-- *******************************
-	-- process(clk) 
-	-- begin
-	-- 	if rising_edge(clk) then
-	-- 		if clear = '1' then
-	-- 			blank1 <= '1'; -- ???
-	-- 		elsif Clk25 = '1' then	
-	-- 			if (Xpixel1 < 640 and Ypixel1 < 480) then
-	-- 				blank1 <= '0'; 
-	-- 			else
-	-- 				blank1 <= '1'; 
-	-- 			end if;
-	-- 		end if;
-	-- 	end if;
-	-- end process;
-
 	blank1 <= '0' when (Xpixel1 < 640 and Ypixel1 < 480) else '1';
 
-
 	-- Video ram address composite
-	VR_addr <= to_unsigned(20, 7) * Ypixel1(8 downto 5) + Xpixel1(9 downto 5);
-	
+	--VR_addr <= to_unsigned(10, 7) * Ypixel1(9 downto 6) + Xpixel1(9 downto 6);
+		VR_addr <= to_unsigned(20, 7) * Ypixel1(8 downto 5) + Xpixel1(9 downto 5);
+	--
 	-- VIDEO_RAM:
 	-- data <= mem(addr), with one clock cycle delay
-	
 	process(clk)
 	begin
 		if rising_edge(clk) then
@@ -219,10 +173,11 @@ begin
 		end if;
 	end process;
 	
-	
 	-- Character rom address:
+	--CR_addr <= unsigned(VR_data(2 downto 0)) & Ypixel2(6 downto 3) & Xpixel2(6 downto 3);
+	--CR_addr <= unsigned(VR_data(4 downto 0)) & Ypixel2(5 downto 3) & Xpixel2(5 downto 3);
 	CR_addr <= unsigned(VR_data(4 downto 0)) & Ypixel2(4 downto 2) & Xpixel2(4 downto 2);
-	
+
 	U0b : char_rom port map (clk=>clk, addr=>CR_addr, data=>CR_data); -- one clock cycle delay.
 
 	process(clk)
