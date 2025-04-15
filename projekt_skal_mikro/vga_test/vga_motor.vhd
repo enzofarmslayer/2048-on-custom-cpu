@@ -1,10 +1,3 @@
---------------------------------------------------------------------------------
--- VGA MOTOR
--- Version 1.1: 2016-02-16, Anders Nilsson
--- Version 1.2: 2023-01-11, Petter Kallstrom. Changelog: Corrected a pipeline mistake.
--- Version 2.0: 2023-09-29. Anders Nilsson. 12-bit VGA.
-
-
 -- library declaration
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;            -- basic IEEE library
@@ -34,18 +27,27 @@ architecture Behavioral of vga_motor is
 	signal ClkDiv : unsigned(1 downto 0);          -- Clock divisor, to generate 25 MHz signal
 	signal Clk25  : std_logic;                     -- One pulse width 25 MHz signal
 	
-	signal CR_addr  : unsigned(10 downto 0);       -- address for CHAR_ROM
+	signal CR_addr  : unsigned(11 downto 0);       -- address for CHAR_ROM
 	signal CR_data : std_logic_vector(11 downto 0); -- data from CHAR_ROM.
 	
 	signal blank1, blank2, blank : std_logic; -- blanking signal, with delayed versions
 	signal Hsync1, Hsync2 : std_logic;
 	signal Vsync1, Vsync2 : std_logic;
 	
+	signal TileX, TileY : unsigned(1 downto 0);
+
+	signal SpriteX : unsigned(3 downto 0); -- 0 to 19
+	signal SpriteY : unsigned(3 downto 0); -- 0 to 14
+	signal SpriteX_tmp, SpriteY_tmp : unsigned(3 downto 0);
+
+	signal pixel_counter_x, pixel_counter_y : unsigned(3 downto 0); -- räknar till 10
+
+	
 	-- Character image rom:
 	component char_rom is
 		port (
 			clk      : in std_logic;
-			addr     : in unsigned(10 downto 0);
+			addr     : in unsigned(11 downto 0);
 			data     : out std_logic_vector(11 downto 0));
 	end component;
 	
@@ -66,100 +68,105 @@ begin
 	
 	-- 25 MHz clock (one system clock pulse width)
 	Clk25 <= '1' when (ClkDiv = 3) else '0';
-	
-	-- ClkDiv:  | 0 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 0 | 1 | 2 | 3 |
-	-- Clk25:   |___|___|___|---|___|___|___|---|___|___|___|---|
-	-- Xpixel1: |<     ...     >|<     ...     >|<     ...     >|
-	-- Ypixel1: ...            >|<     ...                       
-	-- VR_addr: |<     ...     >|<     ...     >|<     ...     >|  f(*pixel)
-	-- VR_data: ...>|<     ...     >|<     ...     >|<     ...     f(addr) @ cc
-	-- CR_Addr: ...>|<     ...     >|<     ...     >|<     ...     f(data, *pixel)
-	-- CR_data:     ...>|<     ...     >|<     ...     >|< ...     f(tAddr) @ cc
-	-- RGB:         ...>|<     ...     >|<     ...     >|< ...     f(tPixel)
-	-- blank1:  |___|___|___|___|---|---|---|---|___|___|___|___|
-	-- blank2:  |___|___|___|___|___|---|---|---|---|___|___|___|
-	-- *sync1:  |---|---|---|---|___|___|___|___|---|---|---|---|
-	-- *sync2:  |---|---|---|---|---|___|___|___|___|---|---|---|
-	-- *sync:   |---|---|---|---|---|---|___|___|___|___|---|---|
-	
 
 	-- Horizontal pixel counter
-	-- *******************************
-	-- *                             *
-	-- *  VHDL for:                  *
-	-- *  Xpixel1                    *
-	-- *                             *
-	-- *******************************
 	process(clk) 
 	begin
 		if rising_edge(clk) then
 			if clear = '1' then
 				Xpixel1 <= (others => '0'); 
+				pixel_counter_x <= (others => '0');
+				SpriteX_tmp <= (others => '0');
 			elsif Clk25 = '1' then
 				if Xpixel1 = 799 then
 					Xpixel1 <= (others => '0'); 
+					pixel_counter_x <= (others => '0');
 				else
 					Xpixel1 <= Xpixel1 + 1; 
 				end if;
-			end if;
-		end if;
-	end process;
-
-	-- Horizontal sync
-	-- *******************************
-	-- *                             *
-	-- *  VHDL for:                  *
-	-- *  Hsync1                     *
-	-- *                             *
-	-- *******************************
-	Hsync1 <= '0' when (Xpixel1 >= 656 and Xpixel1 < 752) else '1';
-
-	-- Vertical pixel counter
-	-- *******************************
-	-- *                             *
-	-- *  VHDL for:                  *
-	-- *  Ypixel1                    *
-	-- *                             *
-	-- *******************************
-	process(clk) 
-	begin
-		if rising_edge(clk) then
-			if clear = '1' then
-				Ypixel1 <= (others => '0'); 
-			elsif Clk25 = '1' then
-				if Xpixel1 = 799 then
-					if Ypixel1 = 520 then
-						Ypixel1 <= (others => '0'); -- Reset vid max row
+				if Xpixel1 < 640 then
+					if pixel_counter_x = 9 then
+						pixel_counter_x <= (others => '0');
+						SpriteX_tmp <= SpriteX_tmp + 1;
 					else
-						Ypixel1 <= Ypixel1 + 1; 
+						pixel_counter_x <= pixel_counter_x + 1;
 					end if;
 				end if;
 			end if;
 		end if;
 	end process;
 
-	-- Vertical Sync
-	-- *******************************
-	-- *                             *
-	-- *  VHDL for:                  *
-	-- *  Vsync1                     *
-	-- *                             *
-	-- *******************************
+	-- Horizontal sync
+	Hsync1 <= '0' when (Xpixel1 >= 656 and Xpixel1 < 752) else '1';
+
+	-- Vertical pixel counter
+	process(clk) 
+	begin
+		if rising_edge(clk) then
+			if clear = '1' then
+				Ypixel1 <= (others => '0'); 
+				pixel_counter_y <= (others => '0');
+				SpriteY_tmp <= (others => '0');
+			elsif Clk25 = '1' then
+				if Xpixel1 = 799 then
+					if Ypixel1 = 520 then
+						Ypixel1 <= (others => '0'); -- Reset vid max row
+						pixel_counter_y <= (others => '0');
+					else 
+						Ypixel1 <= Ypixel1 + 1; 
+					end if;
+
+					if Ypixel1 < 480 then
+						if pixel_counter_y = 9 then
+							pixel_counter_y <= (others => '0');
+							if SpriteY_tmp > 10 then
+								SpriteY_tmp <= (others => '0');
+							else
+								SpriteY_tmp <= SpriteY_tmp + 1;
+							end if;
+						else
+							pixel_counter_y <= pixel_counter_y + 1;
+						end if;
+					end if;
+				end if;
+			end if;
+		end if;
+	end process;
+
 	Vsync1 <= '0' when (Ypixel1 >= 490 and Ypixel1 < 492) else '1';
 
-	-- Video blanking signal
-	-- *******************************
-	-- *                             *
-	-- *  VHDL for:                  *
-	-- *  Blank1                     *
-	-- *                             *
-	-- *******************************
 	blank1 <= '0' when (Xpixel1 < 640 and Ypixel1 < 480) else '1';
 
 	-- Video ram address composite
 	--VR_addr <= to_unsigned(10, 7) * Ypixel1(9 downto 6) + Xpixel1(9 downto 6);
-		VR_addr <= to_unsigned(20, 7) * Ypixel1(8 downto 5) + Xpixel1(9 downto 5);
-	--
+	--VR_addr <= to_unsigned(20, 7) * Ypixel1(8 downto 5) + Xpixel1(9 downto 5);
+
+	process(Xpixel2, Ypixel2)
+	begin
+		if to_integer(Xpixel2) < 160 then
+			TileX <= "00";
+		elsif to_integer(Xpixel2) < 320 then
+			TileX <= "01";
+		elsif to_integer(Xpixel2) < 480 then
+			TileX <= "10";
+		else
+			TileX <= "11";
+		end if;
+
+		if to_integer(Ypixel2) < 120 then
+			TileY <= "00";
+		elsif to_integer(Ypixel2) < 240 then
+			TileY <= "01";
+		elsif to_integer(Ypixel2) < 360 then
+			TileY <= "10";
+		else
+			TileY <= "11";
+		end if;
+	end process;
+
+	VR_addr <= resize(TileY * 4 + TileX, 11);
+
+
 	-- VIDEO_RAM:
 	-- data <= mem(addr), with one clock cycle delay
 	process(clk)
@@ -170,13 +177,14 @@ begin
 			Vsync2 <= Vsync1;
 			Xpixel2 <= Xpixel1;
 			Ypixel2 <= Ypixel1;
+			SpriteX <= SpriteX_tmp;
+			SpriteY <= SpriteY_tmp;
 		end if;
 	end process;
-	
+
+
 	-- Character rom address:
-	--CR_addr <= unsigned(VR_data(2 downto 0)) & Ypixel2(6 downto 3) & Xpixel2(6 downto 3);
-	--CR_addr <= unsigned(VR_data(4 downto 0)) & Ypixel2(5 downto 3) & Xpixel2(5 downto 3);
-	CR_addr <= unsigned(VR_data(4 downto 0)) & Ypixel2(4 downto 2) & Xpixel2(4 downto 2);
+	CR_addr <= unsigned(VR_data(3 downto 0)) & SpriteY & SpriteX;
 
 	U0b : char_rom port map (clk=>clk, addr=>CR_addr, data=>CR_data); -- one clock cycle delay.
 
@@ -205,4 +213,3 @@ begin
 	vgaBlue(0)  <= CR_data(0) when blank = '0' else '0';
 	
 end Behavioral;
-
