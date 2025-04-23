@@ -33,16 +33,12 @@ begin
                 case opcode is
                     when "0000" =>  -- NOP
                         null;
-
                     when "0001" =>  -- AR := rData
                         AR <= rData;
-
                     when "0010" =>  -- AR := 0
                         AR <= (others => '0');
-
                     when "0011" =>  -- AR := AR + rData
                         AR <= AR + rData;
-
                     when others =>
                         null;
                 end case;

@@ -15,8 +15,8 @@ architecture Behavioral of pMem is
 type p_mem_t is array (0 to 15) of unsigned(15 downto 0);
 constant p_mem_c : p_mem_t :=
   (x"1001",
-   x"4000",
-   x"5000",
+   x"2000",
+   x"3000",
    x"0000",
    x"0000",
    x"0000",
