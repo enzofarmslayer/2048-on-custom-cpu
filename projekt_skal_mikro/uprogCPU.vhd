@@ -16,7 +16,7 @@ architecture func of uprogCPU is
 	-- micro Memory component
 	component uMem
 		port(uAddr : in unsigned(5 downto 0);
-			uData : out unsigned(15 downto 0));
+			uData : out unsigned(22 downto 0));
 	end component;
 
 	-- program Memory component
@@ -25,13 +25,15 @@ architecture func of uprogCPU is
 			pData : out unsigned(15 downto 0));
 	end component;
 
-	-- micro memory signals
-	signal uM : unsigned(15 downto 0); -- micro Memory output
-	alias TB : unsigned(2 downto 0) is uM(13 downto 11);
-	alias FB : unsigned(2 downto 0) is uM(10 downto 8);
-	alias PCsig : std_logic is uM(7);  -- (0:PC=PC, 1:PC++)
-	alias uPCsig : std_logic is uM(6); -- (0:uPC++, 1:uPC=uAddr)
-	alias uAddr : unsigned(5 downto 0) is uM(5 downto 0);
+	-- micro memory signals 
+	signal uM : unsigned(22 downto 0); -- micro Memory output
+	alias ALU : unsigned(3 downto 0) is uM(22 downto 19)
+	alias TB : unsigned(2 downto 0) is uM(18 downto 16);
+	alias FB : unsigned(2 downto 0) is uM(15 downto 13);
+	alias S : std_logic is uM(12); -- Switch for register file
+	alias PCsig : std_logic is uM(11);  -- (0:PC=PC, 1:PC++)
+	alias SEQ : unsigned(3 downto 0) is uM(10 downto 7); 
+	alias uAddr : unsigned(6 downto 0) is uM(6 downto 0);
 
 	-- program memory signals
 	signal PM : unsigned(15 downto 0); -- Program Memory output
@@ -100,7 +102,7 @@ begin
 		if rising_edge(clk) then
 			if (rst = '1') then
 				ASR <= (others => '0');
-			elsif (FB = "100") then
+			elsif (FB = "010") then
 				ASR <= DATA_BUS;
 			end if;
 		end if;
