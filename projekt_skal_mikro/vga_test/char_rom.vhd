@@ -54,18 +54,18 @@ begin
 		x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", --
 		x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", -- 
 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", -- 2
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"FFF", x"FFF", x"FFF", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"FFF", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"FFF", x"FFF", x"FFF", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"FFF", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"FFF", x"FFF", x"FFF", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", 
-		x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE", x"EEE",
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", -- 2
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"FFF", x"FFF", x"FFF", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"FFF", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"FFF", x"FFF", x"FFF", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"FFF", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"FFF", x"FFF", x"FFF", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", 
+		x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6", x"0E6",
 
 		x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", -- OFFSET, TA INTE BORT
 		x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000", x"000",

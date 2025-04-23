@@ -24,14 +24,14 @@ entity VIDEO_RAM is
 		clk       : in std_logic;
 		-- port 1
 		we1       : in std_logic;
-		data_in1  : in std_logic_vector(7 downto 0);
-		data_out1 : out std_logic_vector(7 downto 0);
-		addr1     : in unsigned(10 downto 0);
+		data_in1  : in std_logic_vector(3 downto 0);
+		data_out1 : out std_logic_vector(3 downto 0);
+		addr1     : in unsigned(3 downto 0);
 		-- port 2
 		we2       : in std_logic;
-		data_in2  : in std_logic_vector(7 downto 0);
-		data_out2 : out std_logic_vector(7 downto 0);
-		addr2     : in unsigned(10 downto 0));
+		data_in2  : in std_logic_vector(3 downto 0);
+		data_out2 : out std_logic_vector(3 downto 0);
+		addr2     : in unsigned(3 downto 0));
 end VIDEO_RAM;
 
 
@@ -39,10 +39,11 @@ end VIDEO_RAM;
 architecture Behavioral of VIDEO_RAM is
 
 	-- video RAM type
-	type ram_t is array (0 to 2047) of std_logic_vector(7 downto 0);
+	type ram_t is array (0 to 15) of std_logic_vector(3 downto 0);
 	-- initiate video RAM to one cursor ("1F") followed by spaces ("00")
-	--signal VideoRAM : ram_t := (0 => x"1F", others => (others => '0'));
-        shared variable VideoRAM : ram_t := (0 => x"1F", others => (others => '0'));
+	--signal VVideoRAM : ram_t := (others => (others => '0'));
+    shared variable VideoRAM : ram_t := (others => (others => '0'));
+
 
 begin
 

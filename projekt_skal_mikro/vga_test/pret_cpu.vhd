@@ -19,50 +19,73 @@ entity PRET_CPU is
 		rst      : in std_logic;   -- reset signal
 		ScanCode : in std_logic_vector(7 downto 0);   -- scancode byte
 		make_op  : in std_logic;                      -- one-pulsed scancode-enable
-		data     : out std_logic_vector(7 downto 0);  -- tile data
-		addr     : out unsigned(10 downto 0);         -- tile address
+		data     : out std_logic_vector(3 downto 0);  -- tile data
+		addr     : out unsigned(3 downto 0);         -- tile address
 		we       : out std_logic);                    -- write enable
 end PRET_CPU;
 
 architecture behavioral of PRET_CPU is
 
     signal init_done    : std_logic := '0';
-    signal write_index  : std_logic_vector(7 downto 0) := x"00";
-    signal write_addr   : unsigned(10 downto 0) := (others => '0');
+    signal write_index  : std_logic_vector(3 downto 0) := x"0";
+    signal write_addr   : unsigned(3 downto 0) := (others => '0');
+    signal trigger_init : std_logic := '0';
+    signal write_value  : unsigned(3 downto 0) := (others => '0');
+    constant TOTAL_TILE_COUNT : integer := 16;  -- tile indices x00 to x7F
 
-    constant TOTAL_TILE_COUNT : integer := 100;  -- tile indices x00 to x7F
-
-begin
-
-    process(clk)
     begin
-        if rising_edge(clk) then
-            if rst = '1' then
-                write_index <= x"00";
-                write_addr  <= (others => '0');
-                init_done   <= '0';
-                we          <= '0';
-            elsif init_done = '0' then
-                -- Write current tile index to video RAM
-                we   <= '1';
-                addr <= write_addr; -- Shift left logical by 2 = multiply by 4
-                data <= write_index;
 
-                -- Increment tile index and address
-                write_index <= std_logic_vector(unsigned(write_index) + 1);
-                write_addr  <= write_addr + 1;
-
-                -- Stop when all tiles are written
-                if unsigned(write_index) = to_unsigned(TOTAL_TILE_COUNT - 1, 8) then
-                    init_done <= '1';
+        process(clk)
+        begin
+            if rising_edge(clk) then
+                if rst = '1' then
+                    write_index  <= x"0";
+                    write_addr   <= (others => '0');
+                    init_done    <= '0';
+                    we           <= '0';
+                    trigger_init <= '0';
+    
+                elsif make_op = '1' then
+                    init_done <= '0';
+                    case ScanCode is
+                        when x"1D" =>  -- 'W' scancode
+                            write_value  <= x"1";
+                            trigger_init <= '1';
+                        when x"1C" =>  -- 'A' scancode
+                            write_value  <= x"2";
+                            trigger_init <= '1';
+                        when x"1B" =>  -- 'S' scancode
+                            write_value  <= x"3";
+                            trigger_init <= '1';
+                        when x"23" =>  -- 'D' scancode
+                            write_value  <= x"4";
+                            trigger_init <= '1';
+                        when others =>
+                            trigger_init <= '0';
+                    end case;
+    
+                elsif trigger_init = '1' and init_done = '0' then
+                    -- Write value to RAM
+                    we   <= '1';
+                    addr <= write_addr;
+                    data <= std_logic_vector(unsigned(write_value));
+    
+                    -- Increment address and index
+                    write_addr  <= write_addr + 1;
+                    write_index <= std_logic_vector(unsigned(write_index) + 1);
+    
+                    if unsigned(write_index) = to_unsigned(TOTAL_TILE_COUNT - 1, 4) then
+                        init_done    <= '1';
+                        trigger_init <= '0';
+                    end if;
+                else
+                    we <= '0';
                 end if;
-            else
-                we <= '0';
             end if;
-        end if;
-    end process;
-
-end behavioral;
+        end process;
+    
+    end behavioral;
+    
 
 
 

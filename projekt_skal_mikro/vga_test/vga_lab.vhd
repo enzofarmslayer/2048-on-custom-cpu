@@ -47,8 +47,8 @@ architecture Behavioral of VGA_lab is
 			rst      : in std_logic;   -- reset signal
 			ScanCode : in std_logic_vector(7 downto 0);   -- scancode byte
 			make_op  : in std_logic;                      -- one-pulsed scancode-enable
-			data     : out std_logic_vector(7 downto 0);  -- tile data
-			addr     : out unsigned(10 downto 0);         -- tile address
+			data     : out std_logic_vector(3 downto 0);  -- tile data
+			addr     : out unsigned(3 downto 0);         -- tile address
 			we       : out std_logic);                    -- write enable
 	end component;
 	
@@ -58,22 +58,22 @@ architecture Behavioral of VGA_lab is
 			clk       : in std_logic;
 			-- port 1
 			we1       : in std_logic;
-			data_in1  : in std_logic_vector(7 downto 0);
-			data_out1 : out std_logic_vector(7 downto 0);
-			addr1     : in unsigned(10 downto 0);
+			data_in1  : in std_logic_vector(3 downto 0);
+			data_out1 : out std_logic_vector(3 downto 0);
+			addr1     : in unsigned(3 downto 0);
 			-- port 2
 			we2       : in std_logic;
-			data_in2  : in std_logic_vector(7 downto 0);
-			data_out2 : out std_logic_vector(7 downto 0);
-			addr2     : in unsigned(10 downto 0));
+			data_in2  : in std_logic_vector(3 downto 0);
+			data_out2 : out std_logic_vector(3 downto 0);
+			addr2     : in unsigned(3 downto 0));
 	end component;
 	
 	-- VGA motor component
 	component vga_motor
 		port (
 			clk      : in std_logic;
-			VR_data  : in std_logic_vector(7 downto 0);
-			VR_addr  : out unsigned(10 downto 0);
+			VR_data  : in std_logic_vector(3 downto 0);
+			VR_addr  : out unsigned(3 downto 0);
 			clear    : in std_logic;
 			vgaRed   : out std_logic_vector(3 downto 0);
 			vgaGreen : out std_logic_vector(3 downto 0);
@@ -87,13 +87,13 @@ architecture Behavioral of VGA_lab is
 	signal make_op : std_logic;
 	
 	-- intermediate signals between PRETENDED_CPU and VIDEO_RAM
-	signal data_s : std_logic_vector(7 downto 0); -- data
-	signal addr_s : unsigned(10 downto 0);        -- address
+	signal data_s : std_logic_vector(3 downto 0); -- data
+	signal addr_s : unsigned(3 downto 0);        -- address
 	signal we_s   : std_logic;                    -- write enable
 	
 	-- intermediate signals between VIDEO_RAM and VGA_MOTOR
-	signal data_out2_s : std_logic_vector(7 downto 0); -- data
-	signal addr2_s     : unsigned(10 downto 0);        -- address
+	signal data_out2_s : std_logic_vector(3 downto 0); -- data
+	signal addr2_s     : unsigned(3 downto 0);        -- address
 	
 begin
 	
@@ -104,7 +104,7 @@ begin
 	U1 : pret_cpu port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, data=>data_s, addr=>addr_s, we=>we_s);
 	
 	-- picture memory component connection
-	U2 : video_ram port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"00000000", data_out2=>data_out2_s, addr2=>addr2_s);
+	U2 : video_ram port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"0000", data_out2=>data_out2_s, addr2=>addr2_s);
 	
 	-- VGA motor component connection
 	U3 : vga_motor port map(clk=>clk, clear=>btnC, VR_data=>data_out2_s, VR_addr=>addr2_s, vgaRed=>vgaRed, vgaGreen=>vgaGreen, vgaBlue=>vgaBlue, Hsync=>Hsync, Vsync=>Vsync);

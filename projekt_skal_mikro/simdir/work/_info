@@ -1,7 +1,6 @@
 m255
 K4
 z2
-!s99 nomlopt
 !s11e vcom 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -10,23 +9,12 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/home/enzcu445/TSEA83/2048/projekt_skal_mikro/simdir
-T_opt
-!s110 1744048333
-VQI_]Ql1>=ka`Rh`C`GJ7I2
-04 11 4 work uprogcpu_tb func 1
-=1-001b213b2c24-67f410cc-daf6c-2ff0d
-!s124 OEM100
-o-quiet -auto_acc_if_foreign -work work -L work +acc
-tCvgOpt 0
-n@_opt
-OL;O;2021.3;73
-R0
 Echar_rom
-Z1 w1744729604
+Z1 w1745402172
 Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 30
+!i122 5
 R0
 Z5 8../vga_test/char_rom.vhd
 Z6 F../vga_test/char_rom.vhd
@@ -36,9 +24,9 @@ VO7:[BPg@5dS:`5X3?Ne:O1
 !s100 IHk<QW8LZQ^^9YPhZazoV0
 Z8 OL;C;2021.3;73
 32
-Z9 !s110 1744730558
+Z9 !s110 1745405554
 !i10b 1
-Z10 !s108 1744730558.000000
+Z10 !s108 1745405554.000000
 Z11 !s90 ../vga_test/vga_lab.vhd|../vga_test/kbd_enc.vhd|../vga_test/pret_cpu.vhd|../vga_test/video_ram.vhd|../vga_test/vga_motor.vhd|../vga_test/char_rom.vhd|
 Z12 !s107 ../vga_test/char_rom.vhd|../vga_test/vga_motor.vhd|../vga_test/video_ram.vhd|../vga_test/pret_cpu.vhd|../vga_test/kbd_enc.vhd|../vga_test/vga_lab.vhd|
 !i113 0
@@ -48,11 +36,11 @@ R2
 R3
 R4
 Z14 DEx4 work 8 char_rom 0 22 O7:[BPg@5dS:`5X3?Ne:O1
-!i122 30
+!i122 5
 l28
 Z15 L24 233
-Z16 V;43J_0<^[XEjL8TSHT8z41
-Z17 !s100 kUBg>R9>M=D_J67GODEJQ3
+Z16 V;QnI?ZY^_>ASo@PlzelBK3
+Z17 !s100 jCz9HjBd1IJNO_N=4oLO[3
 R8
 32
 R9
@@ -67,7 +55,7 @@ Z18 w1744634021
 R2
 R3
 R4
-!i122 30
+!i122 5
 R0
 Z19 8../vga_test/kbd_enc.vhd
 Z20 F../vga_test/kbd_enc.vhd
@@ -89,7 +77,7 @@ R2
 R3
 R4
 Z21 DEx4 work 7 kbd_enc 0 22 U6N1@_c`@z45:a2M8M3Pn0
-!i122 30
+!i122 5
 l40
 Z22 L25 130
 Z23 VF:XUJ4ON>@1h6lUz@Ehc22
@@ -103,60 +91,19 @@ R11
 R12
 !i113 0
 R13
-Epmem
-Z25 w1713431954
-R2
-R3
-R4
-!i122 2
-R0
-Z26 8../Mem/pMem.vhd
-Z27 F../Mem/pMem.vhd
-l0
-L6 1
-VHANjE`8e^GJmVUmc[m[]I3
-!s100 CRmFV1z:@0GC:HWWIh`Y30
-R8
-32
-Z28 !s110 1744300001
-!i10b 1
-Z29 !s108 1744300000.000000
-Z30 !s90 ../uprogCPU.vhd|../Mem/uMem.vhd|../Mem/pMem.vhd|
-Z31 !s107 ../Mem/pMem.vhd|../Mem/uMem.vhd|../uprogCPU.vhd|
-!i113 0
-R13
-Abehavioral
-R2
-R3
-R4
-DEx4 work 4 pmem 0 22 HANjE`8e^GJmVUmc[m[]I3
-!i122 2
-l37
-Z32 L12 29
-Ve<ZU9IdIeK^<eIYX>Ph2C2
-!s100 _NHiUefA^cfh?ic?FcVfZ2
-R8
-32
-R28
-!i10b 1
-R29
-R30
-R31
-!i113 0
-R13
 Epret_cpu
-Z33 w1744647358
+Z25 w1745405549
 R2
 R3
 R4
-!i122 30
+!i122 5
 R0
-Z34 8../vga_test/pret_cpu.vhd
-Z35 F../vga_test/pret_cpu.vhd
+Z26 8../vga_test/pret_cpu.vhd
+Z27 F../vga_test/pret_cpu.vhd
 l0
 L16 1
-VDiXLR_eiPQGEWXOBkNSCm3
-!s100 k[d^h2WJ7P0GJHoEf`7Se3
+Viz=Y4>V`mJTkEES:^iM4@3
+!s100 :Yn>8k>0X:W8Nbm0@XRdl0
 R8
 32
 R9
@@ -170,12 +117,12 @@ Abehavioral
 R2
 R3
 R4
-Z36 DEx4 work 8 pret_cpu 0 22 DiXLR_eiPQGEWXOBkNSCm3
-!i122 30
-l35
-Z37 L27 39
-Z38 VfUI9RKQ<9n<=eQ`d80mEJ3
-Z39 !s100 a;JiQoSeiCYZkNCKh^Gim3
+Z28 DEx4 work 8 pret_cpu 0 22 iz=Y4>V`mJTkEES:^iM4@3
+!i122 5
+l36
+L27 61
+VcR8_>=A8XMiIS:<0Xm=C_3
+!s100 hoSzok7bk=E6@Q_^LVf?G3
 R8
 32
 R9
@@ -183,140 +130,17 @@ R9
 R10
 R11
 R12
-!i113 0
-R13
-Eumem
-Z40 w1713431961
-R2
-R3
-R4
-!i122 2
-R0
-Z41 8../Mem/uMem.vhd
-Z42 F../Mem/uMem.vhd
-l0
-L6 1
-VPo>TD0NXA5aM_?OQ`[27R0
-!s100 I?WaaiI51`<UPPUF=_MWe1
-R8
-32
-R28
-!i10b 1
-R29
-R30
-R31
-!i113 0
-R13
-Abehavioral
-R2
-R3
-R4
-DEx4 work 4 umem 0 22 Po>TD0NXA5aM_?OQ`[27R0
-!i122 2
-l37
-R32
-V;Y?G6DV:kMl;`TP<FlRgN0
-!s100 Ghf5][^b_Llo>PA:>nWlS2
-R8
-32
-R28
-!i10b 1
-R29
-R30
-R31
-!i113 0
-R13
-Euprogcpu
-Z43 w1744299780
-R2
-R3
-R4
-!i122 2
-R0
-Z44 8../uprogCPU.vhd
-Z45 F../uprogCPU.vhd
-l0
-L6 1
-VbL1<lA]9iEP?HWh:0U09A1
-!s100 55Y98Z@3[WNO6QkKF<WUQ0
-R8
-32
-R28
-!i10b 1
-R29
-R30
-R31
-!i113 0
-R13
-Afunc
-R2
-R3
-R4
-DEx4 work 8 uprogcpu 0 22 bL1<lA]9iEP?HWh:0U09A1
-!i122 2
-l49
-L12 112
-VNNiDP[PmP^FWOdFhLPgVV0
-!s100 KPJhf6X]kgf7LJ78I`<4F0
-R8
-32
-R28
-!i10b 1
-R29
-R30
-R31
-!i113 0
-R13
-Euprogcpu_tb
-Z46 w1744299772
-R2
-R3
-R4
-!i122 3
-R0
-Z47 8../uprogCPU_tb.vhd
-Z48 F../uprogCPU_tb.vhd
-l0
-L5 1
-Vl@i2`LaQehJaUI5WB@o[80
-!s100 YG:kVYcN50b7ld30RjzV]1
-R8
-32
-R28
-!i10b 1
-Z49 !s108 1744300001.000000
-Z50 !s90 ../uprogCPU_tb.vhd|
-Z51 !s107 ../uprogCPU_tb.vhd|
-!i113 0
-R13
-Afunc
-R2
-R3
-R4
-DEx4 work 11 uprogcpu_tb 0 22 l@i2`LaQehJaUI5WB@o[80
-!i122 3
-l23
-L8 33
-VITYiDIAjQGj_C>h_I41lF0
-!s100 m5Z8zzePPX^=<nE:Taf7A3
-R8
-32
-R28
-!i10b 1
-R49
-R50
-R51
 !i113 0
 R13
 Evga_lab
-Z52 w1744299968
+Z29 w1745402726
 R2
 R3
 R4
-!i122 30
+!i122 5
 R0
-Z53 8../vga_test/vga_lab.vhd
-Z54 F../vga_test/vga_lab.vhd
+Z30 8../vga_test/vga_lab.vhd
+Z31 F../vga_test/vga_lab.vhd
 l0
 R7
 V816Ja3NP10TQX:`I4n1MC1
@@ -334,12 +158,12 @@ Abehavioral
 R2
 R3
 R4
-Z55 DEx4 work 7 vga_lab 0 22 816Ja3NP10TQX:`I4n1MC1
-!i122 30
+Z32 DEx4 work 7 vga_lab 0 22 816Ja3NP10TQX:`I4n1MC1
+!i122 5
 l98
-Z56 L30 83
-Z57 V;Q`H?e_DK;QHNoB`heQiE1
-Z58 !s100 1bVOTzoh6eElMTWeVM_e_0
+Z33 L30 83
+Z34 V^d=@O?m??:^AfGHS^C<Nb2
+Z35 !s100 1IOY`<4^IoZ_hAlz`:m^S2
 R8
 32
 R9
@@ -350,18 +174,18 @@ R12
 !i113 0
 R13
 Evga_motor
-Z59 w1744730555
+Z36 w1745403653
 R2
 R3
 R4
-!i122 30
+!i122 5
 R0
-Z60 8../vga_test/vga_motor.vhd
-Z61 F../vga_test/vga_motor.vhd
+Z37 8../vga_test/vga_motor.vhd
+Z38 F../vga_test/vga_motor.vhd
 l0
 L8 1
-Vl7oZQViHfY?ZbIn1zzGg:3
-!s100 IazBelKEnVGU_3jOhiiS=2
+Vc^cekON8az?E[P1ViDZ4V0
+!s100 fo[gm6MzEJ:4f0N:@[_c53
 R8
 32
 R9
@@ -375,12 +199,12 @@ Abehavioral
 R2
 R3
 R4
-Z62 DEx4 work 9 vga_motor 0 22 l7oZQViHfY?ZbIn1zzGg:3
-!i122 30
+Z39 DEx4 work 9 vga_motor 0 22 c^cekON8az?E[P1ViDZ4V0
+!i122 5
 l54
-L23 193
-VcmBIKb2gmkghKS:OfE>;B3
-!s100 9LJ5JYh9LeQJ9ZAn9Kk8W1
+Z40 L23 193
+V^FCb^Y:g7X;^5fIXI^goG2
+!s100 MSnk8izVXK2iV9m09DE8E3
 R8
 32
 R9
@@ -391,18 +215,18 @@ R12
 !i113 0
 R13
 Evideo_ram
-Z63 w1744299969
+Z41 w1745403449
 R2
 R3
 R4
-!i122 30
+!i122 5
 R0
-Z64 8../vga_test/video_ram.vhd
-Z65 F../vga_test/video_ram.vhd
+Z42 8../vga_test/video_ram.vhd
+Z43 F../vga_test/video_ram.vhd
 l0
 L22 1
-V4ehO1dT54DFK_=aLGJPY82
-!s100 =;ENhlSk7hzQk`aMO9Wza1
+V29B]:K93A03N0mbFG7<:61
+!s100 A8dWOmnJlhbZV8?PPIC6H0
 R8
 32
 R9
@@ -416,12 +240,12 @@ Abehavioral
 R2
 R3
 R4
-Z66 DEx4 work 9 video_ram 0 22 4ehO1dT54DFK_=aLGJPY82
-!i122 30
-l47
-Z67 L39 31
-Z68 VB@RI<dbojm3ScRNcd`YdX3
-Z69 !s100 QkOHh;gZ^FLNP83hmlW9@2
+Z44 DEx4 work 9 video_ram 0 22 29B]:K93A03N0mbFG7<:61
+!i122 5
+l48
+Z45 L39 32
+Z46 VhWmfR@^OkIPAM>VW?4H@f0
+Z47 !s100 RQ50d8m1LQa=l9M>=lcJc3
 R8
 32
 R9

@@ -8,8 +8,8 @@ use IEEE.NUMERIC_STD.ALL;               -- IEEE library for the unsigned type
 entity vga_motor is
 	port (
 		clk      : in std_logic;
-		VR_data  : in std_logic_vector(7 downto 0);
-		VR_addr  : out unsigned(10 downto 0);
+		VR_data  : in std_logic_vector(3 downto 0);
+		VR_addr  : out unsigned(3 downto 0);
 		clear    : in std_logic;
 		vgaRed   : out std_logic_vector(3 downto 0);
 		vgaGreen : out std_logic_vector(3 downto 0);
@@ -164,7 +164,7 @@ begin
 		end if;
 	end process;
 
-	VR_addr <= resize(TileY * 4 + TileX, 11);
+	VR_addr <= TileY & TileX;
 
 
 	-- VIDEO_RAM:
@@ -184,7 +184,7 @@ begin
 
 
 	-- Character rom address:
-	CR_addr <= unsigned(VR_data(3 downto 0)) & SpriteY & SpriteX;
+	CR_addr <= unsigned(VR_data) & SpriteY & SpriteX;
 
 	U0b : char_rom port map (clk=>clk, addr=>CR_addr, data=>CR_data); -- one clock cycle delay.
 
