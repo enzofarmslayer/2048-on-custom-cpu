@@ -6,9 +6,8 @@ entity regFile is
   port (
     clk     : in  std_logic;
     we      : in  std_logic;                  -- Write enable
-    wAddr   : in  unsigned(3 downto 0);       -- Write address
+    addr   : in  unsigned(3 downto 0);       -- Read and Write address
     wData   : in  unsigned(7 downto 0);       -- Data to write
-    rAddr   : in  unsigned(3 downto 0);       -- Read address
     rData   : out unsigned(7 downto 0)        -- Data read
   );
 end regFile;
@@ -23,14 +22,15 @@ begin
   -- Synchronous write
   process(clk)
   begin
-    if rising_edge(clk) then
-      if we = '1' then
-        registers(to_integer(wAddr)) <= wData;
+      if rising_edge(clk) then
+          if (we = '1') then
+              -- Write operation: store wData to the register at addr
+              registers(to_integer(addr)) <= wData;
+          end if;
       end if;
-    end if;
   end process;
-
-  -- Combinatorial read
-  rData <= registers(to_integer(rAddr));
+  
+  -- For reading the data from the same register (i.e., addr is used for both read and write)
+  rData <= registers(to_integer(addr));  -- Read data from the register at addr
 
 end Behavioral;

@@ -1,9 +1,3 @@
---------------------------------------------------------------------------------
--- PICT MEM
--- Anders Nilsson
--- 16-feb-2016
--- Version 1.1
--- Version 2.0: 2023-09-29. Anders Nilsson. Separate processes for ports in VideoRAM (block RAM).
 -- * Separate processes is necessary when buiding dual port block RAMs (Vivado design user guide)
 -- * https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Simple-Dual-Port-Block-RAM-with-Single-Clock-VHDL
 -- * The design guide also states the use of shared variables when accessing the same

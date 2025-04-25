@@ -1,11 +1,3 @@
---------------------------------------------------------------------------------
--- PRETENDED_CPU
--- Version 1.0: See KBD_ENC.
--- Version 2.0: 2023-01-12. Petter Kallstrom. Changelog: Moved this to an own module
--- Description:
--- * This reads scancodes, and writes to the video RAM
--- * This module is instead of a CPU.
-
 -- library declaration
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;            -- basic IEEE library

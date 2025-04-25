@@ -1,8 +1,6 @@
-
--- Description:
 -- * Read bytes from a PS2 bus
 -- * Encode bytes into scancodes
--- * Limitation: Does not handle scancodes containing "E0" or "E1" bytes.
+-- * Does not handle scancodes containing "E0" or "E1" bytes.
 
 -- library declaration
 library IEEE;
