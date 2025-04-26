@@ -39,9 +39,22 @@ architecture func of uprogCPU is
 		);
 	end component;
 
+	-- uprogALU
+	component uprogALU
+    port(
+        opcode  : in unsigned(3 downto 0);
+        rData   : in unsigned(7 downto 0);
+        AR_in   : in unsigned(7 downto 0);
+		AR_out 	: out unsigned(7 downto 0);
+        Z_flag  : out std_logic;
+        N_flag  : out std_logic
+    );
+	end component;
+
+
 	-- micro memory signals 
 	signal uM : unsigned(22 downto 0); -- micro Memory output
-	alias ALU : unsigned(3 downto 0) is uM(22 downto 19);
+	alias ALU_opcode : unsigned(3 downto 0) is uM(22 downto 19);
 	alias TB : unsigned(2 downto 0) is uM(18 downto 16);
 	alias FB : unsigned(2 downto 0) is uM(15 downto 13);
 	alias S : std_logic is uM(12); -- Switch for register file
@@ -63,11 +76,21 @@ architecture func of uprogCPU is
 	signal PC : unsigned(15 downto 0); -- Program Counter
 	signal IR : unsigned(15 downto 0); -- Instruction Register
 	signal ASR : unsigned(15 downto 0); -- Address Register
-
+	signal AR : unsigned(7 downto 0); -- akumelator register
+	
+	signal SR  : std_logic_vector(7 downto 0);  -- Status-register (bit 0 = Z, bit 1 = N)
+	alias Zf : std_logic is SR(0);
+	alias Nf : std_logic is SR(1);
 
 	-- local combinatorials
 	signal DATA_BUS : unsigned(15 downto 0); -- Data Bus
 	signal K1 : unsigned(3 downto 0); -- k1 lookup table??
+
+	-- SR signals
+	signal Z_flag, N_flag : std_logic;   -- add these two temporaries
+
+	-- alu result
+	signal alu_result : unsigned(7 downto 0);  -- 8-bit ALU output
 
 begin
 	-- process(clk)
@@ -81,6 +104,7 @@ begin
 	"0101" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
 	"0110" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
 	"1000" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
+	"1001" when (IR(15 downto 12) = "0100") else
 	"0000";                             
 
 	-- mPC : micro Program Counter
@@ -141,14 +165,41 @@ begin
 		end if;
 	end process;
 
-	--signals for regfile do we need clock?
+	-- SR : Status-register (latches Z and N flags every cycle)
+	process(clk)
+	begin
+	if rising_edge(clk) then
+		if rst = '1' then
+		SR <= (others => '0');
+		else
+		SR(0) <= Z_flag;           -- Z-flag from ALU
+		SR(1) <= N_flag;           -- N-flag from ALU
+		-- remaining bits reserved for future use
+		end if;
+	end if;
+	end process;
+	
+
+	-- AR
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if rst = '1' then
+				AR <= (others => '0');
+			else 
+				AR <= alu_result;
+			end if;
+		end if;
+	end process;
+
+
+	--signals for regfile 
 	r_we <= '1' when (FB = "100") else '0';  -- Enable write when FB = "001", else disable it
 	--r_addr <= IR(11 downto 8) when (FB = "100") else "0000";
 	r_addr <= IR(11 downto 8);
-	r_wData <= DATA_BUS(7 downto 0) when (FB = "100");
-
+	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');
 	
-	-- out signals
+	-- out signals (to video ram)
 	addr_out <= ASR(3 downto 0) when (FB = "101") else (others => '0');  -- Memory address should be ASR when writing
 	data_out <= DATA_BUS(3 downto 0) when (FB = "101") else (others => '0');  -- Memory data should be DATA_BUS when writing
 	weCPU <= '1' when (FB = "101") else '0'; --weCPU 
@@ -162,12 +213,16 @@ begin
 	-- reg file component connection
 	U2 : regFile port map(clk=>clk, we=>r_we, addr=>r_addr, wData=>r_wData, rData=>r_rData);
 
+	-- ALU component connection
+	U4 : uprogALU port map(opcode=>ALU_opcode, rData=>r_rData, AR_in=>AR, AR_out=>alu_result, Z_flag=>Z_flag, N_flag=>N_flag);
+
 	-- data bus assignment
 	DATA_BUS <= "00000000" & IR(7 downto 0) when (TB = "001") else
 		PM when (TB = "010") else
 		PC when (TB = "011") else
 		ASR when (TB = "100") else
 		"00000000" & r_rData when (TB = "101") else -- GRx till databuss
+		"00000000" & AR when (TB = "100") else
 		(others => '0');
 
 end architecture;

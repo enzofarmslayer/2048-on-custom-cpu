@@ -1,6 +1,7 @@
 # Files in the project. Make sure the first file is the top module
 VHD = vga_lab.vhd \
       uprogCPU.vhd \
+      ALU.vhd \
       Mem/uMem.vhd \
       Mem/pMem.vhd \
       Mem/regFile.vhd \
