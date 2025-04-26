@@ -239,7 +239,7 @@ begin
 	DATA_BUS <= "00000000" & IR(7 downto 0) when (TB = "001") else
 		PM when (TB = "010") else
 		PC when (TB = "011") else
-		ASR when (TB = "100") else
+		--ASR when (TB = "100") else
 		"00000000" & r_rData when (TB = "101") else -- GRx till databuss
 		"00000000" & AR when (TB = "100") else
 		"00000000" & unsigned(ScanCode) when (TB = "111" and read_scancode_flag = '1') else

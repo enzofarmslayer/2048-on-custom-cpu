@@ -14,7 +14,7 @@ architecture Behavioral of uMem is
 -- micro Memory
 type u_mem_t is array (0 to 15) of unsigned(22 downto 0);
 constant u_mem_c : u_mem_t :=
-   ---ALU_TB__FB_S_PC_SEQ_uAddr
+   ---ALU_TB__FB_S_PC_SEQ_uAddr OBS K1 i uprogCPU måste updateras när minnet uppdateras och alu om du la till alu-op
   (b"0000_011_010_0_0_0000_0000000", -- PC->ASR
    b"0000_010_001_0_1_0000_0000000", -- PM->IR, PC+1
    b"0000_000_000_0_0_0001_0000000", -- K1->uPC
