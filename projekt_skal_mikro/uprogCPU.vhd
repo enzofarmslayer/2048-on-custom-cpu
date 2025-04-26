@@ -7,6 +7,8 @@ entity uprogCPU is
   port(clk: in std_logic;
   		rst : in std_logic;   -- reset signal
   		--btnC : in std_logic     -- reset button (middle of the five), active high
+		ScanCode   : in std_logic_vector(7 downto 0);  -- scancode byte
+		make_op    : in std_logic;                   -- one-pulsed scancode-enable
 		data_out     : out unsigned(3 downto 0);  -- tile data
 		addr_out     : out unsigned(3 downto 0);         -- tile address
 		weCPU       : out std_logic              -- write enable
@@ -84,13 +86,16 @@ architecture func of uprogCPU is
 
 	-- local combinatorials
 	signal DATA_BUS : unsigned(15 downto 0); -- Data Bus
-	signal K1 : unsigned(3 downto 0); -- k1 lookup table??
+	signal K1 : unsigned(3 downto 0); 
 
 	-- SR signals
-	signal Z_flag, N_flag : std_logic;   -- add these two temporaries
+	signal Z_flag, N_flag : std_logic;   
 
 	-- alu result
-	signal alu_result : unsigned(7 downto 0);  -- 8-bit ALU output
+	signal alu_result : unsigned(7 downto 0);  
+
+	-- signals for IN
+	signal read_scancode_flag : std_logic := '0';
 
 begin
 	-- process(clk)
@@ -179,7 +184,6 @@ begin
 	end if;
 	end process;
 	
-
 	-- AR
 	process(clk)
 	begin
@@ -192,6 +196,21 @@ begin
 		end if;
 	end process;
 
+	-- IN and flag reg
+	process(clk)
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                read_scancode_flag <= '0';
+            elsif make_op = '1' and read_scancode_flag = '0' then
+                read_scancode_flag <= '1';
+            elsif read_scancode_flag = '1' then
+				if (TB = "111") then
+                	read_scancode_flag <= '0';  -- Reset the flag after reading the scancode
+				end if;
+            end if;
+        end if;
+    end process;
 
 	--signals for regfile 
 	r_we <= '1' when (FB = "100") else '0';  -- Enable write when FB = "001", else disable it
@@ -223,6 +242,7 @@ begin
 		ASR when (TB = "100") else
 		"00000000" & r_rData when (TB = "101") else -- GRx till databuss
 		"00000000" & AR when (TB = "100") else
+		"00000000" & unsigned(ScanCode) when (TB = "111" and read_scancode_flag = '1') else
 		(others => '0');
 
 end architecture;

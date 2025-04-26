@@ -47,14 +47,16 @@ architecture Behavioral of VGA_lab is
 
 	component uprogCPU is
 		port (
-		  clk      : in std_logic;   -- system clock (100 MHz)
-		  rst      : in std_logic;   -- reset signal
-		  --btnC     : in std_logic    -- reset button (active high)
-		  data_out     : out std_logic_vector(3 downto 0);  -- tile data
-		  addr_out     : out unsigned(3 downto 0);         -- tile address
-		  weCPU       : out std_logic              -- write enable
+			clk        : in std_logic;             -- system clock (100 MHz)
+			rst        : in std_logic;             -- reset signal
+			ScanCode   : in std_logic_vector(7 downto 0);  -- scancode byte
+			make_op    : in std_logic;                   -- one-pulsed scancode-enable
+			data_out   : out std_logic_vector(3 downto 0);  -- tile data
+			addr_out   : out unsigned(3 downto 0);         -- tile address
+			weCPU      : out std_logic                  -- write enable
 		);
 	end component;
+	
 	
 	-- picture memory component
 	component video_ram
@@ -107,7 +109,7 @@ begin
 	-- pretended cpu component connection
 	--U1 : pret_cpu port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, data=>data_s, addr=>addr_s, we=>we_s);
 	
-	U1 : uprogCPU port map(clk=>clk, rst=>btnC, data_out=>data_s, addr_out=>addr_s, weCPU=>we_s);
+	U1 : uprogCPU port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, data_out=>data_s, addr_out=>addr_s, weCPU=>we_s);
 
 	-- picture memory component connection
 	U2 : video_ram port map(clk=>clk, we1=>we_s, data_in1=>data_s, addr1=>addr_s, we2=>'0', data_in2=>"0000", data_out2=>data_out2_s, addr2=>addr2_s);

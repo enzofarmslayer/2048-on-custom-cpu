@@ -12,6 +12,8 @@ ARCHITECTURE func OF uprogCPU_tb2 IS
   PORT(
     clk      : IN std_logic;
     rst      : IN std_logic;  -- Reset signal
+    ScanCode : IN std_logic_vector(7 downto 0);  -- scancode byte
+    make_op  : IN std_logic;  -- one-pulsed scancode-enable
     data_out : OUT unsigned(3 downto 0);  -- Tile data output
     addr_out : OUT unsigned(3 downto 0);  -- Tile address output
     weCPU    : OUT std_logic              -- Write enable output
@@ -21,6 +23,8 @@ ARCHITECTURE func OF uprogCPU_tb2 IS
   -- Inputs to the UUT
   signal clk      : std_logic := '0';
   signal rst      : std_logic := '0';
+  signal ScanCode : std_logic_vector(7 downto 0) := (others => '0');  -- scancode input
+  signal make_op  : std_logic := '0';  -- make operation signal
 
   -- Outputs from the UUT
   signal data_out : unsigned(3 downto 0);
@@ -36,6 +40,8 @@ BEGIN
     PORT MAP (
       clk => clk,
       rst => rst,
+      ScanCode => ScanCode,  -- connect the scancode signal
+      make_op => make_op,    -- connect the make_op signal
       data_out => data_out,
       addr_out => addr_out,
       weCPU => weCPU
@@ -52,23 +58,5 @@ BEGIN
 
   -- Reset signal stimulus (active high)
   rst <= '1', '0' after 17 ns;  -- Assert reset at time 0 and deassert after 20 ns
-
-  -- Additional test stimulus process
---   stimulus_process : process
---   begin
---     -- Wait for the reset to be deasserted
---     wait for 40 ns;
-
---     -- At this point, you can check the outputs of the UUT (uprogCPU)
---     -- You can also add more test cases if necessary
---     assert (data_out = "0000") report "Test failed for data_out" severity error;
---     assert (addr_out = "0000") report "Test failed for addr_out" severity error;
---     assert (weCPU = '0') report "Test failed for weCPU" severity error;
-
---     -- End simulation
---     wait for 50 ns;  -- Wait for a few more clock cycles
---     assert false report "Testbench complete" severity note;
---     wait;
---   end process;
 
 END func;
