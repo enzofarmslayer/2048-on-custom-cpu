@@ -12,8 +12,8 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.uprogCPU_tb2 
-# Start time: 22:58:27 on Apr 26,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Start time: 17:31:58 on Apr 28,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -66,5 +66,5 @@ run 500 ns
 #    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
 # ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
 #    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# End time: 23:00:23 on Apr 26,2025, Elapsed time: 0:01:56
+# End time: 17:32:48 on Apr 28,2025, Elapsed time: 0:00:50
 # Errors: 0, Warnings: 20

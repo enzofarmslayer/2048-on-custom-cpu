@@ -215,7 +215,7 @@ begin
 	--signals for regfile 
 	r_we <= '1' when (FB = "100") else '0';  -- Enable write when FB = "001", else disable it
 	--r_addr <= IR(11 downto 8) when (FB = "100") else "0000";
-	r_addr <= IR(11 downto 8);
+	r_addr <= IR(11 downto 8) when S = '0' else IR(3 downto 0);
 	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');
 	
 	-- out signals (to video ram)
