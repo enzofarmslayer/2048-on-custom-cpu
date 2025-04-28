@@ -97,6 +97,11 @@ architecture func of uprogCPU is
 	-- signals for IN
 	signal read_scancode_flag : std_logic := '0';
 
+	-- signals for addresdecoder
+	signal vram_sel  : std_logic;                  -- ‘1’ ⇒ ASR in 0-15
+	signal pm_addr   : unsigned(15 downto 0);      -- feed pMem only when ≠VRAM
+
+
 begin
 	-- process(clk)
 	-- begin
@@ -157,6 +162,10 @@ begin
 			end if;
 		end if;
 	end process;
+
+	-- Adress decoderish
+	vram_sel <= '1' when ASR(15 downto 4) = x"0" else '0';
+	pm_addr  <= ASR - to_unsigned(16, ASR'length) when vram_sel = '0' else (others => '0'); 
 
 	-- ASR : Address Register
 	process(clk)
@@ -219,15 +228,15 @@ begin
 	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');
 	
 	-- out signals (to video ram)
-	addr_out <= ASR(3 downto 0) when (FB = "101") else (others => '0');  -- Memory address should be ASR when writing
+	addr_out <= ASR(3 downto 0) when vram_sel = '1' and FB = "101" else (others => '0');
 	data_out <= DATA_BUS(3 downto 0) when (FB = "101") else (others => '0');  -- Memory data should be DATA_BUS when writing
-	weCPU <= '1' when (FB = "101") else '0'; --weCPU 
+	weCPU <= '1' when vram_sel = '1' and FB = "101" else '0';
 
 	-- micro memory component connection
 	U0 : uMem port map(uAddr=>uPC, uData=>uM);
 
 	-- program memory component connection
-	U1 : pMem port map(pAddr=>ASR, pData=>PM);
+	U1 : pMem port map(pAddr=>pm_addr, pData=>PM);
 
 	-- reg file component connection
 	U2 : regFile port map(clk=>clk, we=>r_we, addr=>r_addr, wData=>r_wData, rData=>r_rData);

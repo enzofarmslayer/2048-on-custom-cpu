@@ -30,7 +30,6 @@ constant p_mem_c : p_mem_t :=
    x"0000",
    x"0000",
    x"0000");
-
   signal p_mem : p_mem_t := p_mem_c;
 
 
