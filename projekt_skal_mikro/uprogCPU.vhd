@@ -98,7 +98,7 @@ architecture func of uprogCPU is
 	signal read_scancode_flag : std_logic := '0';
 
 	-- signals for addresdecoder
-	signal vram_sel  : std_logic;                  -- ‘1’ ⇒ ASR in 0-15
+	signal vram_sel  : std_logic := '1';                  -- ‘1’ - ASR in 0-15
 	signal pm_addr   : unsigned(15 downto 0);      -- feed pMem only when ≠VRAM
 
 
@@ -137,12 +137,13 @@ begin
 		end if;
 	end process;
 
-	-- PC : Program Counter
+	-- PC : Program Counter 
+	-- should start att 16 according to adressdecoder
 	process(clk)
 	begin
 		if rising_edge(clk) then
 			if (rst = '1') then
-				PC <= (others => '0');
+				PC <= to_unsigned(16, PC'length);
 			elsif (PCsig = '1') then
 				PC <= PC + 1;
 			elsif (FB = "011") then
@@ -163,9 +164,24 @@ begin
 		end if;
 	end process;
 
+	vram_sel <= '1' when ASR(15 downto 4) = "000000000000" else '0';
+
 	-- Adress decoderish
-	vram_sel <= '1' when ASR(15 downto 4) = x"0" else '0';
-	pm_addr  <= ASR - to_unsigned(16, ASR'length) when vram_sel = '0' else (others => '0'); 
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if rst = '1' then
+				pm_addr  <= (others => '0');
+			else
+				if vram_sel = '0' then
+					pm_addr  <= ASR - to_unsigned(16, ASR'length);
+				else
+					pm_addr <= (others => '0');
+				end if;
+			end if;
+		end if;
+	end process;
+	
 
 	-- ASR : Address Register
 	process(clk)
