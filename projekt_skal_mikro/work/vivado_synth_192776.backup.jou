@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Apr 26 20:03:18 2025
-# Process ID: 227406
-# Current directory: /home/enzcu445/TSEA83/2048/projekt_skal_mikro/work
+# Start of session at: Tue Apr 29 15:26:03 2025
+# Process ID: 192776
+# Current directory: /home/ludst503/Documents/2048/2048/projekt_skal_mikro/work
 # Command line: vivado -mode batch -source /courses/TSEA83/bin/build.tcl -notrace -journal vivado_synth.jou -log vivado_synth.log -tclargs synth vga_lab.vhd uprogCPU.vhd ALU.vhd Mem/uMem.vhd Mem/pMem.vhd Mem/regFile.vhd vga_test/kbd_enc.vhd vga_test/video_ram.vhd vga_test/vga_motor.vhd vga_test/char_rom.vhd Basys3.xdc
-# Log file: /home/enzcu445/TSEA83/2048/projekt_skal_mikro/work/vivado_synth.log
-# Journal file: /home/enzcu445/TSEA83/2048/projekt_skal_mikro/work/vivado_synth.jou
-# Running On: muxen1-107.ad.liu.se, OS: Linux, CPU Frequency: 2100.000 MHz, CPU Physical cores: 12, Host memory: 16198 MB
+# Log file: /home/ludst503/Documents/2048/2048/projekt_skal_mikro/work/vivado_synth.log
+# Journal file: /home/ludst503/Documents/2048/2048/projekt_skal_mikro/work/vivado_synth.jou
+# Running On: muxen2-116.ad.liu.se, OS: Linux, CPU Frequency: 2100.000 MHz, CPU Physical cores: 12, Host memory: 16198 MB
 #-----------------------------------------------------------
 source /courses/TSEA83/bin/build.tcl -notrace

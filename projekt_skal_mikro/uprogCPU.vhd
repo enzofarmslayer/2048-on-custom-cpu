@@ -86,7 +86,7 @@ architecture func of uprogCPU is
 
 	-- local combinatorials
 	signal DATA_BUS : unsigned(15 downto 0); -- Data Bus
-	signal K1 : unsigned(3 downto 0); 
+	signal K1 : unsigned(4 downto 0); 
 
 	-- SR signals
 	signal Z_flag, N_flag : std_logic;   
@@ -98,8 +98,11 @@ architecture func of uprogCPU is
 	signal read_scancode_flag : std_logic := '0';
 
 	-- signals for addresdecoder
-	signal vram_sel  : std_logic := '1';                  -- ‘1’ - ASR in 0-15
+	signal vram_sel  : std_logic := '0';                  -- ‘1’ - ASR in 0-15
 	signal pm_addr   : unsigned(15 downto 0);      -- feed pMem only when ≠VRAM
+
+	-- HALT switch
+	signal halt_switch : std_logic := '0';
 
 
 begin
@@ -110,32 +113,42 @@ begin
 	-- 	end if;
 	-- end process;
 
-	K1 <= "0011" when (IR(15 downto 12) = "0000") else  -- K1 = 2 when IR = 0
-	"0101" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
-	"0110" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
-	"1000" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
-	"1001" when (IR(15 downto 12) = "0100") else
-	"0000";                             
+	K1 <= "00011" when (IR(15 downto 12) = "0000") else  -- K1 = 2 when IR = 0
+	"00101" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
+	"00110" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
+	"01000" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
+	"01001" when (IR(15 downto 12) = "0100") else
+	"01100" when (IR(15 downto 12) = "0101") else
+	"01101" when (IR(15 downto 12) = "0110") else
+	"10000" when (IR(15 downto 12) = "0111") else
+	"00000";                             
 
 	-- mPC : micro Program Counter
 	process(clk)
 	begin
 		if rising_edge(clk) then
 			if (rst = '1') then
-				uPC <= (others => '0');
-			elsif (SEQ = "0101") then
-				uPC <= uAddr(5 downto 0);
-			elsif (SEQ = "0000") then
-				uPC <= uPC + 1;
-			elsif (SEQ = "0001") then
-				uPC <= resize(K1, 6);  -- Resize K1 to 6 bits (padding with zeros)
-			elsif (SEQ = "0011") then
-				uPC <= (others => '0');
-			elsif (SEQ = "1111") then 
-				uPC <= uPC;
+				uPC <= (others => '0');  -- Reset uPC on reset signal
+			elsif (halt_switch = '0') then  -- Check if CPU is halted
+				if (SEQ = "0101") then
+					uPC <= uAddr(5 downto 0);  -- Update uPC based on address
+				elsif (SEQ = "0000") then
+					uPC <= uPC + 1;  -- Increment uPC if not halted
+				elsif (SEQ = "0001") then
+					uPC <= resize(K1, 6);  -- Resize K1 to 6 bits (padding with zeros)
+				elsif (SEQ = "0011") then
+					uPC <= (others => '0');  -- Reset uPC to 0
+				elsif (SEQ = "1111") then 
+					halt_switch <= '1';  -- Trigger halt
+				elsif (SEQ = "1000") then
+					if Zf = '1' then
+						uPC <= uAddr(5 downto 0);
+					end if;
+				end if;
 			end if;
 		end if;
 	end process;
+	
 
 	-- PC : Program Counter 
 	-- should start att 16 according to adressdecoder
@@ -143,14 +156,17 @@ begin
 	begin
 		if rising_edge(clk) then
 			if (rst = '1') then
-				PC <= to_unsigned(16, PC'length);
-			elsif (PCsig = '1') then
-				PC <= PC + 1;
-			elsif (FB = "011") then
-				PC <= DATA_BUS;
+				PC <= to_unsigned(16, PC'length);  -- Reset PC on reset signal
+			elsif (halt_switch = '0') then  -- Check if CPU is halted
+				if (PCsig = '1') then
+					PC <= PC + 1;  -- Increment PC if not halted
+				elsif (FB = "011") then
+					PC <= DATA_BUS;  -- Update PC from the data bus if not halted
+				end if;
 			end if;
 		end if;
 	end process;
+	
 
 	-- IR : Instruction Register
 	process(clk)
@@ -165,23 +181,7 @@ begin
 	end process;
 
 	vram_sel <= '1' when ASR(15 downto 4) = "000000000000" else '0';
-
-	-- Adress decoderish
-	process(clk)
-	begin
-		if rising_edge(clk) then
-			if rst = '1' then
-				pm_addr  <= (others => '0');
-			else
-				if vram_sel = '0' then
-					pm_addr  <= ASR - to_unsigned(16, ASR'length);
-				else
-					pm_addr <= (others => '0');
-				end if;
-			end if;
-		end if;
-	end process;
-	
+	pm_addr <= ASR - to_unsigned(16, ASR'length) when ASR(15 downto 4) /= "000000000000" else (others => '0');
 
 	-- ASR : Address Register
 	process(clk)

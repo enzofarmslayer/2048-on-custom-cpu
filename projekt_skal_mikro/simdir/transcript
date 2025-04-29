@@ -12,8 +12,8 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.uprogCPU_tb2 
-# Start time: 13:33:29 on Apr 29,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 15:55:51 on Apr 29,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -24,49 +24,5 @@
 # Loading work.pmem(behavioral)#1
 # Loading work.regfile(behavioral)#1
 # Loading work.uprogalu(comb)#1
-add wave -r sim:/uprogcpu_tb2/*
-run 500 ns
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut/U4
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut/U2
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut/U1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut/U0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
-# End time: 13:34:40 on Apr 29,2025, Elapsed time: 0:01:11
-# Errors: 0, Warnings: 21
+# Break key hit
+# Break key hit
