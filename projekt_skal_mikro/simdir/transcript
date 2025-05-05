@@ -12,7 +12,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.uprogCPU_tb2 
-# Start time: 14:05:41 on May 05,2025
+# Start time: 18:25:44 on May 05,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -24,7 +24,7 @@
 # Loading work.pmem(behavioral)#1
 # Loading work.regfile(behavioral)#1
 # Loading work.uprogalu(comb)#1
-add wave -r sim:/uprogcpu_tb2/*
+add wave -r /*
 run 1000 ns
 # ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
 #    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
@@ -74,7 +74,9 @@ run 1000 ns
 #    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
 # ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
 #    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /uprogcpu_tb2/uut
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ns  Iteration: 1  Instance: /uprogcpu_tb2/uut/U1
-# End time: 14:12:08 on May 05,2025, Elapsed time: 0:06:27
-# Errors: 0, Warnings: 25
+# End time: 18:26:42 on May 05,2025, Elapsed time: 0:00:58
+# Errors: 0, Warnings: 26

@@ -124,6 +124,7 @@ begin
 	"01101" when (IR(15 downto 12) = "0110") else  -- K1 = 13 when IR = 6
 	"01110" when (IR(15 downto 12) = "0111") else  -- K1 = 14 when IR = 7
 	"10000" when (IR(15 downto 12) = "1000") else  -- K1 = 16 when IR = 8
+	"10001" when (IR(15 downto 12) = "1000") else  -- K1 = 17 when IR = 9
 	"00000";                             
 
 	-- mPC : micro Program Counter
@@ -147,7 +148,13 @@ begin
 					if Zf = '0' then
 						uPC <= uAddr(5 downto 0);
 					else 
-						uPC <= uPC + 1;
+						uPC <= (others => '0');
+					end if;
+				elsif (SEQ = "0100") then
+					if Zf = '1' then
+						uPC <= uAddr(5 downto 0);
+					else
+						uPc <= (others => '0');
 					end if;
 				end if;
 			end if;
