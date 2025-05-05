@@ -113,14 +113,15 @@ begin
 	-- 	end if;
 	-- end process;
 
-	K1 <= "00011" when (IR(15 downto 12) = "0000") else  -- K1 = 2 when IR = 0
+	K1 <= "00011" when (IR(15 downto 12) = "0000") else  -- K1 = 3 when IR = 0
 	"00101" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
 	"00110" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
 	"01000" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
-	"01001" when (IR(15 downto 12) = "0100") else
-	"01100" when (IR(15 downto 12) = "0101") else
-	"01101" when (IR(15 downto 12) = "0110") else
-	"10000" when (IR(15 downto 12) = "0111") else
+	"01001" when (IR(15 downto 12) = "0100") else  -- K1 = 9 when IR = 4
+	"01100" when (IR(15 downto 12) = "0101") else  -- K1 = 12 when IR = 5
+	"01101" when (IR(15 downto 12) = "0110") else  -- K1 = 13 when IR = 6
+	"01110" when (IR(15 downto 12) = "0111") else  -- K1 = 14 when IR = 7
+	"10000" when (IR(15 downto 12) = "1000") else  -- K1 = 16 when IR = 8
 	"00000";                             
 
 	-- mPC : micro Program Counter
@@ -143,6 +144,8 @@ begin
 				elsif (SEQ = "1000") then
 					if Zf = '1' then
 						uPC <= uAddr(5 downto 0);
+					else 
+						uPC <= (others => '0');
 					end if;
 				end if;
 			end if;
