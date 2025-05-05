@@ -59,4 +59,26 @@ BEGIN
   -- Reset signal stimulus (active high)
   rst <= '1', '0' after 17 ns;  -- Assert reset at time 0 and deassert after 20 ns
 
+   -- Stimulate the input signals
+   process
+   begin
+     -- Wait for a few clock cycles for reset to be deasserted
+     wait for 20 ns;
+ 
+     -- Apply ScanCode and make_op values for the test
+     ScanCode <= x"1D";  -- Set ScanCode to 0x1D (the value to test)
+     make_op <= '1';     -- Trigger make_op
+ 
+     -- Wait for a few clock cycles to observe behavior
+     wait for 20 ns;
+ 
+     -- Assert make_op low to end the operation
+     make_op <= '0';
+ 
+     -- Wait for some more cycles to check the result
+     wait for 50 ns;
+ 
+     -- End of test
+     wait;
+   end process;
 END func;

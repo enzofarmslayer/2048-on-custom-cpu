@@ -104,6 +104,8 @@ architecture func of uprogCPU is
 	-- HALT switch
 	signal halt_switch : std_logic := '0';
 
+	signal scan_reg : unsigned(7 downto 0);
+
 
 begin
 	-- process(clk)
@@ -142,10 +144,10 @@ begin
 				elsif (SEQ = "1111") then 
 					halt_switch <= '1';  -- Trigger halt
 				elsif (SEQ = "1000") then
-					if Zf = '1' then
+					if Zf = '0' then
 						uPC <= uAddr(5 downto 0);
 					else 
-						uPC <= (others => '0');
+						uPC <= uPC + 1;
 					end if;
 				end if;
 			end if;
@@ -232,9 +234,11 @@ begin
                 read_scancode_flag <= '0';
             elsif make_op = '1' and read_scancode_flag = '0' then
                 read_scancode_flag <= '1';
+				scan_reg <= unsigned(ScanCode);
             elsif read_scancode_flag = '1' then
 				if (TB = "111") then
                 	read_scancode_flag <= '0';  -- Reset the flag after reading the scancode
+					scan_reg <= (others => '0');
 				end if;
             end if;
         end if;
@@ -270,7 +274,7 @@ begin
 		--ASR when (TB = "100") else
 		"00000000" & r_rData when (TB = "101") else -- GRx till databuss
 		"00000000" & AR when (TB = "100") else
-		"00000000" & unsigned(ScanCode) when (TB = "111" and read_scancode_flag = '1') else
+		"00000000" & scan_reg when (TB = "111" and read_scancode_flag = '1') else
 		(others => '0');
 
 end architecture;
