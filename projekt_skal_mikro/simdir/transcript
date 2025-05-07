@@ -12,7 +12,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 19:00:18 on May 07,2025
+# Start time: 19:12:00 on May 07,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -29,79 +29,5 @@
 # Loading work.video_ram(behavioral)#1
 # Loading work.vga_motor(behavioral)#1
 # Loading work.char_rom(behavioral)#1
-add wave -r sim:/vga_lab_tb/*
-run 1000 ns
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U3
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1/U4
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1/U2
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1/U1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1/U0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."/=": metavalue detected, returning TRUE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/U1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U1/U1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U3/U0b
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/U3/U0b
-# End time: 19:01:02 on May 07,2025, Elapsed time: 0:00:44
-# Errors: 0, Warnings: 36
+# End time: 19:12:04 on May 07,2025, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 0
