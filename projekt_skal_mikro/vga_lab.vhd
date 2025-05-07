@@ -106,18 +106,18 @@ architecture Behavioral of VGA_lab is
 begin
 	
 	-- keyboard encoder component connection
-	KBD_ENC1 : kbd_enc port map(clk=>clk, rst=>btnC, PS2KeyboardCLK=>PS2Clk, PS2KeyboardData=>PS2Data, ScanCode=>ScanCode, make_op=>make_op);
+	KBD_ENC0 : kbd_enc port map(clk=>clk, rst=>btnC, PS2KeyboardCLK=>PS2Clk, PS2KeyboardData=>PS2Data, ScanCode=>ScanCode, make_op=>make_op);
 	
 	-- pretended cpu component connection
 	--U1 : pret_cpu port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, data=>data_s, addr=>addr_s, we=>we_s);
 	
-	UPROGCPU1 : uprogCPU port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, vram_in=>vram_to_cpu, data_out=>data_s, addr_out=>addr_s, weCPU=>we_s);
+	CPU0 : uprogCPU port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, vram_in=>vram_to_cpu, data_out=>data_s, addr_out=>addr_s, weCPU=>we_s);
 
 	-- picture memory component connection
-	VIDEO_RAM1 : video_ram port map(clk=>clk, we1=>we_s, data_in1=>data_s, data_out1=>vram_to_cpu, addr1=>addr_s, we2=>'0', data_in2=>"0000", data_out2=>data_out2_s, addr2=>addr2_s);
+	VIDEO_RAM0 : video_ram port map(clk=>clk, we1=>we_s, data_in1=>data_s, data_out1=>vram_to_cpu, addr1=>addr_s, we2=>'0', data_in2=>"0000", data_out2=>data_out2_s, addr2=>addr2_s);
 	
 	-- VGA motor component connection
-	VGA_MOTOR1 : vga_motor port map(clk=>clk, clear=>btnC, VR_data=>data_out2_s, VR_addr=>addr2_s, vgaRed=>vgaRed, vgaGreen=>vgaGreen, vgaBlue=>vgaBlue, Hsync=>Hsync, Vsync=>Vsync);
+	VGA_MOTOR0 : vga_motor port map(clk=>clk, clear=>btnC, VR_data=>data_out2_s, VR_addr=>addr2_s, vgaRed=>vgaRed, vgaGreen=>vgaGreen, vgaBlue=>vgaBlue, Hsync=>Hsync, Vsync=>Vsync);
 	
 end Behavioral;
 

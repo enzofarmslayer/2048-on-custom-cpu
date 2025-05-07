@@ -186,7 +186,7 @@ begin
 	-- Character rom address:
 	CR_addr <= unsigned(VR_data) & SpriteY & SpriteX;
 
-	U0b : char_rom port map (clk=>clk, addr=>CR_addr, data=>CR_data); -- one clock cycle delay.
+	CHAR_ROM1 : char_rom port map (clk=>clk, addr=>CR_addr, data=>CR_data); -- one clock cycle delay.
 
 	process(clk)
 	begin

@@ -64,6 +64,26 @@ begin
         wait for clk_period / 2;
     end process;
 
-    
+    -- Stimulus process
+    stim_proc: process
+    begin
+        -- Test 1: Reset signal
+        btnC <= '1';  -- Apply reset
+        wait for 20 ns;
+        btnC <= '0';  -- Remove reset
+        wait for 20 ns;
+
+        -- Test 2: PS2 input signal toggling (simulating keypress)
+        PS2Data <= '0';  -- Key press simulation
+        wait for 10 ns;
+        PS2Data <= '1';  -- Key release simulation
+        wait for 10 ns;
+
+        -- Test 3: Verify VGA output signals (just for observation)
+        wait for 100 ns;
+
+        -- End simulation
+        wait;
+    end process;
 
 end architecture behavior;
