@@ -265,16 +265,16 @@ begin
 	weCPU <= '1' when vram_sel = '1' and FB = "101" and IR(15 downto 12) = "0010" else '0';
 
 	-- micro memory component connection
-	U0 : uMem port map(uAddr=>uPC, uData=>uM);
+	UMEM2 : uMem port map(uAddr=>uPC, uData=>uM);
 
 	-- program memory component connection
-	U1 : pMem port map(pAddr=>pm_addr, pData=>PM);
+	PMEM2 : pMem port map(pAddr=>pm_addr, pData=>PM);
 
 	-- reg file component connection
-	U2 : regFile port map(clk=>clk, we=>r_we, addr=>r_addr, wData=>r_wData, rData=>r_rData);
+	REGFILE2 : regFile port map(clk=>clk, we=>r_we, addr=>r_addr, wData=>r_wData, rData=>r_rData);
 
 	-- ALU component connection
-	U4 : uprogALU port map(opcode=>ALU_opcode, rData=>r_rData, AR_in=>AR, AR_out=>alu_result, Z_flag=>Z_flag, N_flag=>N_flag);
+	ALU2 : uprogALU port map(opcode=>ALU_opcode, rData=>r_rData, AR_in=>AR, AR_out=>alu_result, Z_flag=>Z_flag, N_flag=>N_flag);
 
 	-- data bus assignment
 	DATA_BUS <= "00000000" & IR(7 downto 0) when (TB = "001") else

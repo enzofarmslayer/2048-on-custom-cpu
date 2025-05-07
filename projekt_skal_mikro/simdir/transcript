@@ -12,7 +12,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 19:12:00 on May 07,2025
+# Start time: 19:23:16 on May 07,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -29,5 +29,87 @@
 # Loading work.video_ram(behavioral)#1
 # Loading work.vga_motor(behavioral)#1
 # Loading work.char_rom(behavioral)#1
-# End time: 19:12:04 on May 07,2025, Elapsed time: 0:00:04
-# Errors: 0, Warnings: 0
+add wave -r /*
+run 2000 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1/UPROGALU1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1/REGFILE1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1/PMEM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1/UMEM1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."/=": metavalue detected, returning TRUE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/UPROGCPU1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /vga_lab_tb/uut/UPROGCPU1/PMEM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR1/U0b
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/KBD_ENC1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 5 ns  Iteration: 2  Instance: /vga_lab_tb/uut/UPROGCPU1/UMEM1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 5 ns  Iteration: 2  Instance: /vga_lab_tb/uut/VGA_MOTOR1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR1/U0b
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 25 ns  Iteration: 1  Instance: /vga_lab_tb/uut/KBD_ENC1
+# End time: 19:28:15 on May 07,2025, Elapsed time: 0:04:59
+# Errors: 0, Warnings: 40
