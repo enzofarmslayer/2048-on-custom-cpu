@@ -43,7 +43,7 @@ architecture behavioral of PRET_CPU is
                         when x"1D" =>  -- 'W' scancode
                             write_value  <= x"1";
                             trigger_init <= '1';
-                        when x"1C" =>  -- 'A' scancode
+                        when x"1C" =>  -- 'A' scancode1
                             write_value  <= x"2";
                             trigger_init <= '1';
                         when x"1B" =>  -- 'S' scancode

@@ -14,9 +14,10 @@ ARCHITECTURE func OF uprogCPU_tb2 IS
     rst      : IN std_logic;  -- Reset signal
     ScanCode : IN std_logic_vector(7 downto 0);  -- scancode byte
     make_op  : IN std_logic;  -- one-pulsed scancode-enable
-    data_out : OUT unsigned(3 downto 0);  -- Tile data output
+    data_out : OUT std_logic_vector(3 downto 0);  -- Tile data output
     addr_out : OUT unsigned(3 downto 0);  -- Tile address output
-    weCPU    : OUT std_logic              -- Write enable output
+    weCPU    : OUT std_logic;              -- Write enable output
+    vram_in : IN std_logic_vector(3 downto 0)
   );
   END COMPONENT;
 
@@ -25,9 +26,10 @@ ARCHITECTURE func OF uprogCPU_tb2 IS
   signal rst      : std_logic := '0';
   signal ScanCode : std_logic_vector(7 downto 0) := (others => '0');  -- scancode input
   signal make_op  : std_logic := '0';  -- make operation signal
+  signal vram_in : std_logic_vector(3 downto 0);
 
   -- Outputs from the UUT
-  signal data_out : unsigned(3 downto 0);
+  signal data_out : std_logic_vector(3 downto 0);
   signal addr_out : unsigned(3 downto 0);
   signal weCPU    : std_logic;
 
@@ -44,7 +46,8 @@ BEGIN
       make_op => make_op,    -- connect the make_op signal
       data_out => data_out,
       addr_out => addr_out,
-      weCPU => weCPU
+      weCPU => weCPU,
+      vram_in => vram_in
     );
 
   -- Clock process definition

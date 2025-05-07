@@ -9,9 +9,10 @@ entity uprogCPU is
   		--btnC : in std_logic     -- reset button (middle of the five), active high
 		ScanCode   : in std_logic_vector(7 downto 0);  -- scancode byte
 		make_op    : in std_logic;                   -- one-pulsed scancode-enable
-		data_out     : out unsigned(3 downto 0);  -- tile data
+		data_out     : out std_logic_vector(3 downto 0);  -- tile data
 		addr_out     : out unsigned(3 downto 0);         -- tile address
-		weCPU       : out std_logic              -- write enable
+		weCPU       : out std_logic;              -- write enable
+		vram_in : in std_logic_vector(3 downto 0)
 	);
 end entity;
 
@@ -116,15 +117,16 @@ begin
 	-- end process;
 
 	K1 <= "00011" when (IR(15 downto 12) = "0000") else  -- K1 = 3 when IR = 0
-	"00101" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
-	"00110" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
-	"01000" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
-	"01001" when (IR(15 downto 12) = "0100") else  -- K1 = 9 when IR = 4
-	"01100" when (IR(15 downto 12) = "0101") else  -- K1 = 12 when IR = 5
-	"01101" when (IR(15 downto 12) = "0110") else  -- K1 = 13 when IR = 6
-	"01110" when (IR(15 downto 12) = "0111") else  -- K1 = 14 when IR = 7
-	"10000" when (IR(15 downto 12) = "1000") else  -- K1 = 16 when IR = 8
-	"10001" when (IR(15 downto 12) = "1000") else  -- K1 = 17 when IR = 9
+	"00110" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
+	"00111" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
+	"01001" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
+	"01010" when (IR(15 downto 12) = "0100") else  -- K1 = 9 when IR = 4
+	"01101" when (IR(15 downto 12) = "0101") else  -- K1 = 12 when IR = 5
+	"01110" when (IR(15 downto 12) = "0110") else  -- K1 = 13 when IR = 6
+	"01111" when (IR(15 downto 12) = "0111") else  -- K1 = 14 when IR = 7
+	"10001" when (IR(15 downto 12) = "1000") else  -- K1 = 16 when IR = 8
+	"10010" when (IR(15 downto 12) = "1001") else  -- K1 = 17 when IR = 9
+	"10011" when (IR(15 downto 12) = "1010") else	   -- K1 = 18 when IR = 10
 	"00000";                             
 
 	-- mPC : micro Program Counter
@@ -258,9 +260,9 @@ begin
 	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');
 	
 	-- out signals (to video ram)
-	addr_out <= ASR(3 downto 0) when vram_sel = '1' and FB = "101" else (others => '0');
-	data_out <= DATA_BUS(3 downto 0) when (FB = "101") else (others => '0');  -- Memory data should be DATA_BUS when writing
-	weCPU <= '1' when vram_sel = '1' and FB = "101" else '0';
+	addr_out <= ASR(3 downto 0) when vram_sel = '1' and (FB = "101" or TB = "010") else (others => '0');
+	data_out <= std_logic_vector(DATA_BUS(3 downto 0)) when (FB = "101") else (others => '0');
+	weCPU <= '1' when vram_sel = '1' and FB = "101" and IR(15 downto 12) = "0010" else '0';
 
 	-- micro memory component connection
 	U0 : uMem port map(uAddr=>uPC, uData=>uM);
@@ -276,7 +278,8 @@ begin
 
 	-- data bus assignment
 	DATA_BUS <= "00000000" & IR(7 downto 0) when (TB = "001") else
-		PM when (TB = "010") else
+		PM when (TB = "010" and vram_sel = '0')  else
+		"000000000000" & unsigned(vram_in) when (TB = "010" and vram_sel = '1') else
 		PC when (TB = "011") else
 		--ASR when (TB = "100") else
 		"00000000" & r_rData when (TB = "101") else -- GRx till databuss

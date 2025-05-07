@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed May  7 10:25:21 2025
-# Process ID: 131853
+# Start of session at: Wed May  7 16:30:10 2025
+# Process ID: 58436
 # Current directory: /home/enzcu445/TSEA83/2048/projekt_skal_mikro/work
 # Command line: vivado -mode batch -source /courses/TSEA83/bin/build.tcl -notrace -journal vivado_prog.jou -log vivado_prog.log -tclargs prog vga_lab.vhd uprogCPU.vhd ALU.vhd Mem/uMem.vhd Mem/pMem.vhd Mem/regFile.vhd vga_test/kbd_enc.vhd vga_test/video_ram.vhd vga_test/vga_motor.vhd vga_test/char_rom.vhd Basys3.xdc
 # Log file: /home/enzcu445/TSEA83/2048/projekt_skal_mikro/work/vivado_prog.log
@@ -57,4 +57,4 @@ INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed wi
 #### Program device
 
 INFO: [Labtools 27-3164] End of startup status: HIGH
-INFO: [Common 17-206] Exiting Vivado at Wed May  7 10:25:28 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed May  7 16:30:18 2025...
