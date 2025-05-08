@@ -15,7 +15,7 @@ def assemble_instruction(instruction, labels, line_number):
 
     # Check if this instruction is a label, it should end with ":"
     if instruction.endswith(':'):
-        return 'x"0000"'  # Insert x"0000" for label positions in the hex output
+        return 'x"0000",'  # Insert x"0000" for label positions in the hex output
 
     parts = instruction.split(',')
     parts = [part.strip() for part in parts]
@@ -65,7 +65,7 @@ def assemble_instruction(instruction, labels, line_number):
     
     hex_value = hex_value[:4].ljust(4, '0')  # Ensure the instruction is 4 characters long
     
-    return f'x"{hex_value}"'  # Return hex formatted as x"0000"
+    return f'x"{hex_value}",'  # Return hex formatted as x"0000"
 
 
 def convert_assembly_to_hex(input_file, output_file):
@@ -99,7 +99,7 @@ def convert_assembly_to_hex(input_file, output_file):
 
     # Ensure the output is exactly 240 lines long
     while len(hex_output) < 240:
-        hex_output.append('x"0000"')  # Padding with x"0000"
+        hex_output.append('x"0000",')  # Padding with x"0000"
 
     # Write the output to the file
     with open(output_file, 'w') as outfile:
