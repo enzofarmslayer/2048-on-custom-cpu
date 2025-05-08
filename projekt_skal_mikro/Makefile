@@ -16,8 +16,8 @@ VHD = vga_lab.vhd \
 XDC = Basys3.xdc
 
 # Testbench file
-#TBF = uprogCPU_tb2.vhd
-TBF = vga_lab_tb.vhd
+TBF = uprogCPU_tb2.vhd
+#TBF = vga_lab_tb.vhd
 
 # Include Makefile utilities
 include /courses/TSEA83/bin/util.mk

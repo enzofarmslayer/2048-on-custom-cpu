@@ -83,6 +83,7 @@ def convert_assembly_to_hex(input_file, output_file):
                 label_name = line[:-1].strip().upper()
                 labels[label_name] = line_number  # Store label and its line number
                 instructions.append(line)  # Add the label line itself
+                line_number += 1
             else:
                 instructions.append(line)  # Add normal instructions
                 line_number += 1
