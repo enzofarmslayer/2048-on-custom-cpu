@@ -1,30 +1,31 @@
-LDI,r0,16
-CMP,r0,r1
-add,r0,r1
-HALT
-LD,r0,r1
-STR,r0,r1
-IN,r0
-JMP,MOVE_LOOP
-BNE,MOVE_LOOP
-BEQ,MOVE_LOOP
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-HALT
-MOVE_LOOP: 
-LDI,r4,8
-HALT
+LDI,r15,0
+INIT_REG:
+ldi,r0,0
+ldi,r1,0
+ldi,r2,2
+ldi,r3,0
+ldi,r4,0
+ldi,r9, 0
+ldi,r10,1
+ldi,r11,4
+ldi,r12,0
+ldi,r13,0
+ldi,r14,0
+CMP,r15,r10
+BEQ, KB_INPUT
+KB_INPUT:
+IN, r3
+MAP_LOOP:
+ldi, r9, 1C
+CMP, r3, r9
+BEQ, KB_INPUT
+ldi, r9, 23
+CMP, r3, r9
+BEQ,KB_INPUT
+ldi, r9, 1D
+CMP, r3, r9
+BEQ, KB_INPUT
+ldi, r9, 1B
+CMP, r3, r9
+BEQ, KB_INPUT
+JMP, KB_INPUT

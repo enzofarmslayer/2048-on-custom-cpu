@@ -15,38 +15,47 @@ def assemble_instruction(instruction, labels, line_number):
 
     # Check if this instruction is a label, it should end with ":"
     if instruction.endswith(':'):
-        return 'x"0000",'  # Insert x"0000" for label positions in the hex output
+        return 'x"0000"'  # Insert x"0000" for label positions in the hex output
 
     parts = instruction.split(',')
     parts = [part.strip() for part in parts]
-    
+
     opcode = opcodes.get(parts[0].upper(), None)
     if not opcode:
         raise ValueError(f"Invalid opcode: {parts[0]}")
 
+    # Handle registers like r10, r11, etc.
+    def convert_register_to_hex(register):
+        if register.startswith('r'):
+            reg_num = int(register[1:])
+            return f"{reg_num:X}"  # Convert to hex ('A' for 10, 'B' for 11, etc.)
+        return register  # Just return the original if it's not a register
+
     if parts[0].upper() == "LDI":
-        reg1 = parts[1][1:]  # Extract the register number
+        reg1 = convert_register_to_hex(parts[1])  # Convert the register number to hex
         operand = parts[2]
-        if operand.isdigit():
-            hex_value = f"{opcode}{reg1}{int(operand):02X}"
+ 
+        operand_value = int(operand, 16)  # Hexadecimal operand
+
+        hex_value = f"{opcode}{reg1}{operand_value:02X}"
 
     elif parts[0].upper() == "CMP" or parts[0].upper() == "ADD" or parts[0].upper() == "LD" or parts[0].upper() == "STR":
         # For instructions with two registers
-        reg1 = int(parts[1][1:])  # Extract the first register number
-        reg2 = int(parts[2][1:])  # Extract the second register number
-        hex_value = f"{opcode}{reg1}{reg2:02X}"  # Ensure two-digit hex formatting (e.g., '00', '01')
+        reg1 = convert_register_to_hex(parts[1])  # Convert the first register number
+        reg2 = convert_register_to_hex(parts[2])  # Convert the second register number
+        hex_value = f"{opcode}{reg1}0{reg2}"  # Ensure two-digit hex formatting (e.g., '00', '01')
 
     elif parts[0].upper() in ["JMP", "BNE", "BEQ"]:
         # Replace labels with corresponding line number
         label = parts[1].upper()
         if label in labels:
             # If label is found, replace it with the corresponding address (line number)
-            hex_value = f"{opcode}00{labels[label]:X}"
+            hex_value = f"{opcode}0{labels[label]:02X}"
         else:
             raise ValueError(f"Label {label} not defined!")
 
     elif parts[0].upper() == "IN":
-        reg1 = parts[1][1:]  # Extract the register number
+        reg1 = convert_register_to_hex(parts[1])  # Convert the register number
         hex_value = f"{opcode}{reg1}00"
     
     elif parts[0].upper() == "HALT":
@@ -56,13 +65,13 @@ def assemble_instruction(instruction, labels, line_number):
     
     hex_value = hex_value[:4].ljust(4, '0')  # Ensure the instruction is 4 characters long
     
-    return f'x"{hex_value}",'  # Return hex formatted as x"0000"
+    return f'x"{hex_value}"'  # Return hex formatted as x"0000"
 
 
 def convert_assembly_to_hex(input_file, output_file):
     labels = {}  # Store labels and their corresponding line numbers
     instructions = []  # Store instructions for later processing
-    line_number = 0
+    line_number = 16
 
     # First pass to find labels and store instructions
     with open(input_file, 'r') as infile:
@@ -90,7 +99,7 @@ def convert_assembly_to_hex(input_file, output_file):
 
     # Ensure the output is exactly 240 lines long
     while len(hex_output) < 240:
-        hex_output.append('x"0000",')  # Padding with x"0000"
+        hex_output.append('x"0000"')  # Padding with x"0000"
 
     # Write the output to the file
     with open(output_file, 'w') as outfile:
