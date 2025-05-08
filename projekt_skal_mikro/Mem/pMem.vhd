@@ -11,6 +11,8 @@ end pMem;
 
 architecture Behavioral of pMem is
 
+-- När vi kodar om mǻste branch alltid uppdateras!!!!!!!!!!!!!!!!!!!!!!!!
+
 -- program Memory 
 type p_mem_t is array (0 to 239) of unsigned(15 downto 0);
 constant p_mem_c : p_mem_t :=
