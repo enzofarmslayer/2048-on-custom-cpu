@@ -1,6 +1,6 @@
 LDI,r0,16
 CMP,r0,r1
-ADD,r0,r1
+add,r0,r1
 HALT
 LD,r0,r1
 STR,r0,r1
@@ -26,5 +26,5 @@ HALT
 HALT
 HALT
 MOVE_LOOP: 
-LDI, r4, 8
+LDI,r4,8
 HALT
