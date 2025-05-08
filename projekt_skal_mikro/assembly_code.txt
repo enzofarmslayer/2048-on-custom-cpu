@@ -1,4 +1,5 @@
 LDI,r15,0
+
 INIT_REG:
 ldi,r0,0
 ldi,r1,0
@@ -13,19 +14,54 @@ ldi,r13,0
 ldi,r14,0
 CMP,r15,r10
 BEQ, KB_INPUT
+
+START_SCREEN:
+str, r10, r0
+str, r10, r2
+
 KB_INPUT:
 IN, r3
 MAP_LOOP:
 ldi, r9, 1C
 CMP, r3, r9
-BEQ, KB_INPUT
+BEQ, LOAD_ROW
 ldi, r9, 23
 CMP, r3, r9
-BEQ,KB_INPUT
-ldi, r9, 1D
+BEQ,LOAD_ROW
+ldi, r9, 0
 CMP, r3, r9
-BEQ, KB_INPUT
+BEQ, LOAD_COL
 ldi, r9, 1B
 CMP, r3, r9
-BEQ, KB_INPUT
+BEQ, LOAD_COL
 JMP, KB_INPUT
+
+LOAD_ROW:
+ldi, r1, 0
+ld, r5, r1
+add, r1, r10
+ld, r6, r1
+add, r1, r10
+ld, r7, r1
+add, r1, r10
+ld, r8, r1
+add, r1, r10
+ldi, r9, 23
+CMP, r3, r9
+beq, KB_INPUT
+jmp, KB_INPUT
+
+LOAD_COL:
+ldi, r1, 0
+ld, r5, r1
+add, r1, r11
+ld, r6, r1
+add, r1, r11
+ld, r7, r1
+add, r1, r11
+ld, r8, r1
+add, r1, r11
+ldi, r9, 1B
+CMP, r3, r9
+beq, KB_INPUT
+jmp, KB_INPUT

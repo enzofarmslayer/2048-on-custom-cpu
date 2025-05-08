@@ -26,7 +26,7 @@ ARCHITECTURE func OF uprogCPU_tb2 IS
   signal rst      : std_logic := '0';
   signal ScanCode : std_logic_vector(7 downto 0) := (others => '0');  -- scancode input
   signal make_op  : std_logic := '0';  -- make operation signal
-  signal vram_in : std_logic_vector(3 downto 0);
+  signal vram_in : std_logic_vector(3 downto 0) := (others => '0');
 
   -- Outputs from the UUT
   signal data_out : std_logic_vector(3 downto 0);
@@ -69,7 +69,7 @@ BEGIN
      wait for 20 ns;
  
      -- Apply ScanCode and make_op values for the test
-     ScanCode <= x"1D";  -- Set ScanCode to 0x1D (the value to test)
+     ScanCode <= x"1C";  -- Set ScanCode to 0x1D (the value to test)
      make_op <= '1';     -- Trigger make_op
  
      -- Wait for a few clock cycles to observe behavior
