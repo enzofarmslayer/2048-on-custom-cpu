@@ -12,7 +12,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 19:09:22 on May 09,2025
+# Start time: 20:09:01 on May 09,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -30,7 +30,7 @@
 # Loading work.vga_motor(behavioral)#1
 # Loading work.char_rom(behavioral)#1
 add wave -r sim:/vga_lab_tb/*
-run 10000ns
+run 30000 ns
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -103,5 +103,6 @@ run 10000ns
 #    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
-# End time: 19:10:05 on May 09,2025, Elapsed time: 0:00:43
+run 50000ns
+# End time: 20:11:07 on May 09,2025, Elapsed time: 0:02:06
 # Errors: 0, Warnings: 36

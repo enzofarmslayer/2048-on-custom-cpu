@@ -37,7 +37,6 @@ BEQ, LOAD_COL
 JMP, KB_INPUT
 
 LOAD_ROW:
-ldi, r1, 0
 ld, r5, r1
 add, r1, r10
 ld, r6, r1
@@ -109,25 +108,33 @@ CMP, r12,r10
 BEQ, STORE
 
 MERGE:
+ldi, r9, 0
 CMP, r5, r6
 BNE, MERGE1
-ADD, r5,r6
+CMP, r6, r9
+BEQ, MERGE1
+ADD, r5,r10
 ldi, r6,0
 MERGE1:
 CMP, r6, r7
 BNE, MERGE2
-ADD, r6,r7
+CMP, r7, r9
+BEQ, MERGE2
+ADD, r6,r10
 ldi, r7,0
 MERGE2:
 CMP, r7, r8
 BNE, MERGE3
-ADD, r7,r8
+CMP, r8, r9
+BEQ, MERGE3
+ADD, r7,r10
 ldi, r8,0
 MERGE3:
 ldi, r12,1
 jmp, SHIFT_LOOP
 
 STORE: 
+ldi, r12,0
 ldi, r14, 1
 ldi, r9, 1C
 CMP,r3,r9
@@ -152,7 +159,7 @@ str, r7, r13
 add, r13, r10
 str, r8, r13
 add, r13, r10
-jmp, HALT1
+jmp, MOVE_DONE
 
 COL_STORE:
 add,r13,r4
@@ -164,13 +171,15 @@ str, r7,r13
 add, r13,r11
 str,r8, r13
 ldi,r13,0
-jmp, HALT1
+jmp, MOVE_DONE
 
 MOVE_DONE:
 ADD,r4,r10
+ldi, r14, 0
 CMP, r4, r11
 BNE, MAP_LOOP
 ldi, r15, 1
+jmp, INIT_REG
 
 HALT1:
 HALT
