@@ -49,7 +49,7 @@ add, r1, r10
 ldi, r9, 23
 CMP, r3, r9
 beq, REVERSE_ORDER
-jmp, KB_INPUT
+jmp, SHIFT_LOOP
 
 LOAD_COL:
 ldi, r1, 0
@@ -64,7 +64,7 @@ add, r1, r11
 ldi, r9, 1B
 CMP, r3, r9
 beq, REVERSE_ORDER
-jmp, KB_INPUT
+jmp, SHIFT_LOOP
 
 REVERSE_ORDER:
 mov, r9,r8
@@ -74,11 +74,50 @@ mov, r9,r7
 mov, r7,r6
 mov, r6, r9
 cmp, r14, 1
-BNE, KB_INPUT
+BNE, SHIFT_LOOP
 ldi, r9, 23
 CMP, r3, r9
 BEQ, KB_INPUT
 ldi, r9, 1B
 CMP, r3, r9
 BEQ, KB_INPUT
-HALT 
+HALT
+
+SHIFT_LOOP:
+ldi,r9,0
+CMP, r5,r9
+BNE, SHIFT_LOOP1
+MOV, r5, r6
+ldi, r5, 0 
+SHIFT_LOOP1:
+CMP, r6, r9
+BNE, SHIFT_LOOP2
+MOV, r6, r7
+ldi, r7, 0
+SHIFT_LOOP2:
+CMP, r7, r9
+BNE, SHIFT_LOOP3
+MOV, r7, r8
+ldi, r8, 0
+SHIFT_LOOP3:
+CMP, r12,r10
+BEQ, KB_INPUT
+
+MERGE:
+CMP, r5, r6
+BNE, MERGE1
+ADD, r5,r6
+ldi, r6,0
+MERGE1:
+CMP, r6, r7
+BNE, MERGE2
+ADD, r6,r7
+ldi, r7,0
+MERGE2:
+CMP, r7, r8
+BNE, MERGE3
+ADD, r7,r8
+ldi, r8,0
+MERGE3:
+ldi, r12,1
+BNE, SHIFT_LOOP
