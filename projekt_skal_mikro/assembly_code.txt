@@ -3,7 +3,7 @@ LDI,r15,0
 INIT_REG:
 ldi,r0,0
 ldi,r1,0
-ldi,r2,2
+ldi,r2,0
 ldi,r3,0
 ldi,r4,0
 ldi,r9, 0
@@ -16,8 +16,8 @@ CMP,r15,r10
 BEQ, KB_INPUT
 
 START_SCREEN:
-str, r10, r0
-str, r10, r2
+str, r10, r9
+str, r10, r10
 
 KB_INPUT:
 IN, r3
@@ -52,7 +52,7 @@ beq, REVERSE_ORDER
 jmp, SHIFT_LOOP
 
 LOAD_COL:
-ldi, r1, 0
+add,r1,r4
 ld, r5, r1
 add, r1, r11
 ld, r6, r1
@@ -60,7 +60,7 @@ add, r1, r11
 ld, r7, r1
 add, r1, r11
 ld, r8, r1
-add, r1, r11
+ldi,r1,0
 ldi, r9, 1B
 CMP, r3, r9
 beq, REVERSE_ORDER
@@ -73,22 +73,22 @@ mov, r5, r9
 mov, r9,r7
 mov, r7,r6
 mov, r6, r9
-cmp, r14, 1
+cmp, r14, r10
 BNE, SHIFT_LOOP
 ldi, r9, 23
 CMP, r3, r9
-BEQ, KB_INPUT
+BEQ, ROW_STORE
 ldi, r9, 1B
 CMP, r3, r9
-BEQ, KB_INPUT
-HALT
+BEQ, COL_STORE
+HALT 
 
 SHIFT_LOOP:
 ldi,r9,0
 CMP, r5,r9
 BNE, SHIFT_LOOP1
 MOV, r5, r6
-ldi, r5, 0 
+ldi, r6, 0 
 SHIFT_LOOP1:
 CMP, r6, r9
 BNE, SHIFT_LOOP2
@@ -100,8 +100,13 @@ BNE, SHIFT_LOOP3
 MOV, r7, r8
 ldi, r8, 0
 SHIFT_LOOP3:
+add,r2,r10
+ldi,r9,3
+cmp,r2,r9
+BNE, SHIFT_LOOP
+ldi,r2,0
 CMP, r12,r10
-BEQ, KB_INPUT
+BEQ, STORE
 
 MERGE:
 CMP, r5, r6
@@ -120,4 +125,52 @@ ADD, r7,r8
 ldi, r8,0
 MERGE3:
 ldi, r12,1
-BNE, SHIFT_LOOP
+jmp, SHIFT_LOOP
+
+STORE: 
+ldi, r14, 1
+ldi, r9, 1C
+CMP,r3,r9
+BEQ, ROW_STORE
+ldi, r9, 23
+CMP,r3,r9
+BEQ, REVERSE_ORDER
+ldi, r9, 1D
+CMP,r3,r9
+BEQ, COL_STORE
+ldi, r9, 1B
+CMP,r3,r9
+beq, REVERSE_ORDER
+HALT 
+
+ROW_STORE:
+str, r5, r13
+add, r13, r10
+str, r6, r13
+add, r13, r10
+str, r7, r13
+add, r13, r10
+str, r8, r13
+add, r13, r10
+jmp, HALT1
+
+COL_STORE:
+add,r13,r4
+str,r5, r13
+add, r13,r11
+str,r6,r13
+add, r13,r11
+str, r7,r13
+add, r13,r11
+str,r8, r13
+ldi,r13,0
+jmp, HALT1
+
+MOVE_DONE:
+ADD,r4,r10
+CMP, r4, r11
+BNE, MAP_LOOP
+ldi, r15, 1
+
+HALT1:
+HALT

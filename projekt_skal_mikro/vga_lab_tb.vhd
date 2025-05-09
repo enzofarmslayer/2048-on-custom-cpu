@@ -46,7 +46,7 @@ architecture behavior of vga_lab_tb is
     -- three 1s  ⇒ parity bit must be 0 (odd parity keeps count odd)
     constant make_A : bit_array :=
       ( '0',                   -- start
-        '0','0','1','1','1','0','0','0',   -- data[0] … data[7]
+        '1','1','0','0','0','1','0','0',   -- data[0] … data[7]
         '0',                   -- parity
         '1' );                 -- stop
 
