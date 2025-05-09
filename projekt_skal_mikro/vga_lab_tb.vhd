@@ -39,6 +39,17 @@ architecture behavior of vga_lab_tb is
     -- Clock generation
     constant clk_period : time := 10 ns;
 
+    constant PS2_HALF_PERIOD : time := 10 ns;         -- 20 kHz ≈ 50 µs total
+    type bit_array is array (natural range <>) of std_logic;
+
+    -- 0x1C  = 0001_1100  →  LSb-first: 0 0 1 1 1 0 0 0
+    -- three 1s  ⇒ parity bit must be 0 (odd parity keeps count odd)
+    constant make_A : bit_array :=
+      ( '0',                   -- start
+        '0','0','1','1','1','0','0','0',   -- data[0] … data[7]
+        '0',                   -- parity
+        '1' );                 -- stop
+
 begin
 
     -- Instantiate the Unit Under Test (UUT)
@@ -73,11 +84,18 @@ begin
         btnC <= '0';  -- Remove reset
         wait for 20 ns;
 
-        -- Test 2: PS2 input signal toggling (simulating keypress)
-        PS2Data <= '0';  -- Key press simulation
-        wait for 10 ns;
-        PS2Data <= '1';  -- Key release simulation
-        wait for 10 ns;
+        for i in make_A'range loop
+            PS2Data <= make_A(i);             -- put bit on the line
+
+            PS2Clk  <= '0';                   -- start this clock pulse
+            wait for PS2_HALF_PERIOD;         -- data sampled on FALLING edge
+            PS2Clk  <= '1';
+            wait for PS2_HALF_PERIOD;         -- complete the pulse
+        end loop;
+
+        -- release the lines (idle = both high)
+        PS2Data <= '1';
+        PS2Clk  <= '1';
 
         -- Test 3: Verify VGA output signals (just for observation)
         wait for 100 ns;
