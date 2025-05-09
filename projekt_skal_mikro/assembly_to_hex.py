@@ -39,7 +39,7 @@ def assemble_instruction(instruction, labels, line_number):
 
         hex_value = f"{opcode}{reg1}{operand_value:02X}"
 
-    elif parts[0].upper() == "CMP" or parts[0].upper() == "ADD" or parts[0].upper() == "LD" or parts[0].upper() == "STR":
+    elif parts[0].upper() == "CMP" or parts[0].upper() == "ADD" or parts[0].upper() == "LD" or parts[0].upper() == "STR" or parts[0].upper() == "MOV":
         # For instructions with two registers
         reg1 = convert_register_to_hex(parts[1])  # Convert the first register number
         reg2 = convert_register_to_hex(parts[2])  # Convert the second register number

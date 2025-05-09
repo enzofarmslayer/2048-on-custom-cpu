@@ -28,7 +28,7 @@ BEQ, LOAD_ROW
 ldi, r9, 23
 CMP, r3, r9
 BEQ,LOAD_ROW
-ldi, r9, 0
+ldi, r9, 1D
 CMP, r3, r9
 BEQ, LOAD_COL
 ldi, r9, 1B
@@ -48,7 +48,7 @@ ld, r8, r1
 add, r1, r10
 ldi, r9, 23
 CMP, r3, r9
-beq, KB_INPUT
+beq, REVERSE_ORDER
 jmp, KB_INPUT
 
 LOAD_COL:
@@ -63,5 +63,22 @@ ld, r8, r1
 add, r1, r11
 ldi, r9, 1B
 CMP, r3, r9
-beq, KB_INPUT
+beq, REVERSE_ORDER
 jmp, KB_INPUT
+
+REVERSE_ORDER:
+mov, r9,r8
+mov, r8,r5
+mov, r5, r9
+mov, r9,r7
+mov, r7,r6
+mov, r6, r9
+cmp, r14, 1
+BNE, KB_INPUT
+ldi, r9, 23
+CMP, r3, r9
+BEQ, KB_INPUT
+ldi, r9, 1B
+CMP, r3, r9
+BEQ, KB_INPUT
+HALT 

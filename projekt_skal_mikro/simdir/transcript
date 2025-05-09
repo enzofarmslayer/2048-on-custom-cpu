@@ -12,7 +12,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 14:50:51 on May 09,2025
+# Start time: 15:14:58 on May 09,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -103,5 +103,5 @@ run 6000 ns
 #    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
-# End time: 14:51:34 on May 09,2025, Elapsed time: 0:00:43
+# End time: 15:15:51 on May 09,2025, Elapsed time: 0:00:53
 # Errors: 0, Warnings: 36
