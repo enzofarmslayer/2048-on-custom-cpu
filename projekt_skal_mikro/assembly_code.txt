@@ -209,7 +209,7 @@ SKIP_WRAP:
 add, r13, r10     
 cmp, r13, r9         
 bne, FIND_EMPTY    
-jmp, LOSE         
+jmp, INIT_REG    
 PLACE_1:
 str, r10, r1          
 ldi, r14, 0         

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Sat May 10 22:15:41 2025
+| Date         : Sat May 10 22:31:06 2025
 | Host         : muxen1-104.ad.liu.se running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command      : report_timing -nworst 5 -path_type full -input_pins -file timing_5worst.txt
 | Design       : vga_lab
@@ -12,7 +12,7 @@ Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanc
 
 Timing Report
 
-Slack (MET) :             2.431ns  (required time - arrival time)
+Slack (MET) :             2.326ns  (required time - arrival time)
   Source:                 CPU0/uPC_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            CPU0/SR_reg[0]/D
@@ -20,7 +20,7 @@ Slack (MET) :             2.431ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        7.582ns  (logic 1.913ns (25.230%)  route 5.669ns (74.770%))
+  Data Path Delay:        7.687ns  (logic 2.075ns (26.993%)  route 5.612ns (73.007%))
   Logic Levels:           8  (CARRY4=2 LUT3=1 LUT5=2 LUT6=2 RAMS32=1)
   Clock Path Skew:        -0.033ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.846ns = ( 14.846 - 10.000 ) 
@@ -40,34 +40,34 @@ Slack (MET) :             2.431ns  (required time - arrival time)
                                                       5.139     5.139    
     SLICE_X3Y25          FDRE                         0.000     5.139 r  CPU0/uPC_reg[4]/C
     SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.456     5.595 r  CPU0/uPC_reg[4]/Q
-                         net (fo=43, routed)          1.214     6.810    CPU0/regFile1/ASR_reg[0][4]
+                         net (fo=43, routed)          1.195     6.790    CPU0/regFile1/ASR_reg[0][4]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/I0
-    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.934 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
-                         net (fo=4, routed)           0.819     7.752    CPU0/regFile1/uM[12]
+    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.914 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
+                         net (fo=4, routed)           0.819     7.733    CPU0/regFile1/uM[12]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/I1
-    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.904 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
-                         net (fo=8, routed)           1.174     9.078    CPU0/regFile1/registers_reg_0_15_2_2/A0
-    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_2_2/SP/ADR0
+    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.885 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
+                         net (fo=8, routed)           1.174     9.059    CPU0/regFile1/registers_reg_0_15_1_1/A0
+    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_1_1/SP/ADR0
     SLICE_X2Y20          RAMS32 (Prop_rams32_ADR0_O)
-                                                      0.014     9.092 r  CPU0/regFile1/registers_reg_0_15_2_2/SP/O
-                         net (fo=3, routed)           0.895     9.987    CPU0/regFile1/rData[2]
-    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_3/I0
-    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.111 r  CPU0/regFile1/i__carry_i_3/O
-                         net (fo=1, routed)           0.000    10.111    CPU0/ALU1/S[2]
-    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[2]
-    SLICE_X0Y21          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398    10.509 r  CPU0/ALU1/_inferred__0/i__carry/CO[3]
-                         net (fo=1, routed)           0.000    10.509    CPU0/ALU1/_inferred__0/i__carry_n_0
+                                                      0.024     9.083 r  CPU0/regFile1/registers_reg_0_15_1_1/SP/O
+                         net (fo=3, routed)           0.857     9.940    CPU0/regFile1/rData[1]
+    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_4/I0
+    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.064 r  CPU0/regFile1/i__carry_i_4/O
+                         net (fo=1, routed)           0.000    10.064    CPU0/ALU1/S[1]
+    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[1]
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    10.614 r  CPU0/ALU1/_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000    10.614    CPU0/ALU1/_inferred__0/i__carry_n_0
     SLICE_X0Y22                                                       r  CPU0/ALU1/_inferred__0/i__carry__0/CI
     SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    10.731 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
-                         net (fo=1, routed)           0.581    11.311    CPU0/regFile1/AR_reg[7]_3[0]
+                                                      0.222    10.836 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
+                         net (fo=1, routed)           0.581    11.416    CPU0/regFile1/AR_reg[7]_3[0]
     SLICE_X1Y22                                                       f  CPU0/regFile1/AR[4]_i_1/I5
-    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.610 f  CPU0/regFile1/AR[4]_i_1/O
-                         net (fo=2, routed)           0.987    12.597    CPU0/ALU1/D[4]
+    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.715 f  CPU0/regFile1/AR[4]_i_1/O
+                         net (fo=2, routed)           0.987    12.702    CPU0/ALU1/D[4]
     SLICE_X2Y22                                                       f  CPU0/ALU1/SR[0]_i_1/I1
-    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.721 r  CPU0/ALU1/SR[0]_i_1/O
-                         net (fo=1, routed)           0.000    12.721    CPU0/Z_flag
+    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.826 r  CPU0/ALU1/SR[0]_i_1/O
+                         net (fo=1, routed)           0.000    12.826    CPU0/Z_flag
     SLICE_X2Y22          FDRE                                         r  CPU0/SR_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -80,11 +80,11 @@ Slack (MET) :             2.431ns  (required time - arrival time)
     SLICE_X2Y22          FDRE (Setup_fdre_C_D)        0.081    15.152    CPU0/SR_reg[0]
   -------------------------------------------------------------------
                          required time                         15.152    
-                         arrival time                         -12.721    
+                         arrival time                         -12.826    
   -------------------------------------------------------------------
-                         slack                                  2.431    
+                         slack                                  2.326    
 
-Slack (MET) :             2.431ns  (required time - arrival time)
+Slack (MET) :             2.326ns  (required time - arrival time)
   Source:                 CPU0/uPC_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            CPU0/SR_reg[0]/D
@@ -92,7 +92,7 @@ Slack (MET) :             2.431ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        7.582ns  (logic 1.913ns (25.230%)  route 5.669ns (74.770%))
+  Data Path Delay:        7.687ns  (logic 2.075ns (26.993%)  route 5.612ns (73.007%))
   Logic Levels:           8  (CARRY4=2 LUT3=1 LUT5=2 LUT6=2 RAMS32=1)
   Clock Path Skew:        -0.033ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.846ns = ( 14.846 - 10.000 ) 
@@ -112,34 +112,34 @@ Slack (MET) :             2.431ns  (required time - arrival time)
                                                       5.139     5.139    
     SLICE_X3Y25          FDRE                         0.000     5.139 r  CPU0/uPC_reg[4]/C
     SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.456     5.595 r  CPU0/uPC_reg[4]/Q
-                         net (fo=43, routed)          1.214     6.810    CPU0/regFile1/ASR_reg[0][4]
+                         net (fo=43, routed)          1.195     6.790    CPU0/regFile1/ASR_reg[0][4]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/I0
-    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.934 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
-                         net (fo=4, routed)           0.819     7.752    CPU0/regFile1/uM[12]
+    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.914 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
+                         net (fo=4, routed)           0.819     7.733    CPU0/regFile1/uM[12]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/I1
-    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.904 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
-                         net (fo=8, routed)           1.174     9.078    CPU0/regFile1/registers_reg_0_15_2_2/A0
-    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_2_2/SP/ADR0
+    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.885 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
+                         net (fo=8, routed)           1.174     9.059    CPU0/regFile1/registers_reg_0_15_1_1/A0
+    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_1_1/SP/ADR0
     SLICE_X2Y20          RAMS32 (Prop_rams32_ADR0_O)
-                                                      0.014     9.092 r  CPU0/regFile1/registers_reg_0_15_2_2/SP/O
-                         net (fo=3, routed)           0.895     9.987    CPU0/regFile1/rData[2]
-    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_3/I0
-    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.111 f  CPU0/regFile1/i__carry_i_3/O
-                         net (fo=1, routed)           0.000    10.111    CPU0/ALU1/S[2]
-    SLICE_X0Y21                                                       f  CPU0/ALU1/_inferred__0/i__carry/S[2]
-    SLICE_X0Y21          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398    10.509 r  CPU0/ALU1/_inferred__0/i__carry/CO[3]
-                         net (fo=1, routed)           0.000    10.509    CPU0/ALU1/_inferred__0/i__carry_n_0
+                                                      0.024     9.083 r  CPU0/regFile1/registers_reg_0_15_1_1/SP/O
+                         net (fo=3, routed)           0.857     9.940    CPU0/regFile1/rData[1]
+    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_4/I0
+    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.064 f  CPU0/regFile1/i__carry_i_4/O
+                         net (fo=1, routed)           0.000    10.064    CPU0/ALU1/S[1]
+    SLICE_X0Y21                                                       f  CPU0/ALU1/_inferred__0/i__carry/S[1]
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    10.614 r  CPU0/ALU1/_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000    10.614    CPU0/ALU1/_inferred__0/i__carry_n_0
     SLICE_X0Y22                                                       r  CPU0/ALU1/_inferred__0/i__carry__0/CI
     SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    10.731 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
-                         net (fo=1, routed)           0.581    11.311    CPU0/regFile1/AR_reg[7]_3[0]
+                                                      0.222    10.836 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
+                         net (fo=1, routed)           0.581    11.416    CPU0/regFile1/AR_reg[7]_3[0]
     SLICE_X1Y22                                                       f  CPU0/regFile1/AR[4]_i_1/I5
-    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.610 f  CPU0/regFile1/AR[4]_i_1/O
-                         net (fo=2, routed)           0.987    12.597    CPU0/ALU1/D[4]
+    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.715 f  CPU0/regFile1/AR[4]_i_1/O
+                         net (fo=2, routed)           0.987    12.702    CPU0/ALU1/D[4]
     SLICE_X2Y22                                                       f  CPU0/ALU1/SR[0]_i_1/I1
-    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.721 r  CPU0/ALU1/SR[0]_i_1/O
-                         net (fo=1, routed)           0.000    12.721    CPU0/Z_flag
+    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.826 r  CPU0/ALU1/SR[0]_i_1/O
+                         net (fo=1, routed)           0.000    12.826    CPU0/Z_flag
     SLICE_X2Y22          FDRE                                         r  CPU0/SR_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -152,11 +152,11 @@ Slack (MET) :             2.431ns  (required time - arrival time)
     SLICE_X2Y22          FDRE (Setup_fdre_C_D)        0.081    15.152    CPU0/SR_reg[0]
   -------------------------------------------------------------------
                          required time                         15.152    
-                         arrival time                         -12.721    
+                         arrival time                         -12.826    
   -------------------------------------------------------------------
-                         slack                                  2.431    
+                         slack                                  2.326    
 
-Slack (MET) :             2.431ns  (required time - arrival time)
+Slack (MET) :             2.326ns  (required time - arrival time)
   Source:                 CPU0/uPC_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            CPU0/SR_reg[0]/D
@@ -164,7 +164,7 @@ Slack (MET) :             2.431ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        7.582ns  (logic 1.913ns (25.230%)  route 5.669ns (74.770%))
+  Data Path Delay:        7.687ns  (logic 2.075ns (26.993%)  route 5.612ns (73.007%))
   Logic Levels:           8  (CARRY4=2 LUT3=1 LUT5=2 LUT6=2 RAMS32=1)
   Clock Path Skew:        -0.033ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.846ns = ( 14.846 - 10.000 ) 
@@ -184,34 +184,34 @@ Slack (MET) :             2.431ns  (required time - arrival time)
                                                       5.139     5.139    
     SLICE_X3Y25          FDRE                         0.000     5.139 r  CPU0/uPC_reg[4]/C
     SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.456     5.595 r  CPU0/uPC_reg[4]/Q
-                         net (fo=43, routed)          1.214     6.810    CPU0/regFile1/ASR_reg[0][4]
+                         net (fo=43, routed)          1.195     6.790    CPU0/regFile1/ASR_reg[0][4]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/I0
-    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.934 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
-                         net (fo=4, routed)           0.819     7.752    CPU0/regFile1/uM[12]
+    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.914 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
+                         net (fo=4, routed)           0.819     7.733    CPU0/regFile1/uM[12]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/I1
-    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.904 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
-                         net (fo=8, routed)           1.174     9.078    CPU0/regFile1/registers_reg_0_15_2_2/A0
-    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_2_2/SP/ADR0
+    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.885 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
+                         net (fo=8, routed)           1.174     9.059    CPU0/regFile1/registers_reg_0_15_1_1/A0
+    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_1_1/SP/ADR0
     SLICE_X2Y20          RAMS32 (Prop_rams32_ADR0_O)
-                                                      0.014     9.092 r  CPU0/regFile1/registers_reg_0_15_2_2/SP/O
-                         net (fo=3, routed)           0.895     9.987    CPU0/regFile1/rData[2]
-    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_3/I0
-    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.111 r  CPU0/regFile1/i__carry_i_3/O
-                         net (fo=1, routed)           0.000    10.111    CPU0/ALU1/S[2]
-    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[2]
-    SLICE_X0Y21          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398    10.509 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
-                         net (fo=1, routed)           0.000    10.509    CPU0/ALU1/_inferred__0/i__carry_n_0
+                                                      0.024     9.083 r  CPU0/regFile1/registers_reg_0_15_1_1/SP/O
+                         net (fo=3, routed)           0.857     9.940    CPU0/regFile1/rData[1]
+    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_4/I0
+    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.064 r  CPU0/regFile1/i__carry_i_4/O
+                         net (fo=1, routed)           0.000    10.064    CPU0/ALU1/S[1]
+    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[1]
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    10.614 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000    10.614    CPU0/ALU1/_inferred__0/i__carry_n_0
     SLICE_X0Y22                                                       f  CPU0/ALU1/_inferred__0/i__carry__0/CI
     SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    10.731 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
-                         net (fo=1, routed)           0.581    11.311    CPU0/regFile1/AR_reg[7]_3[0]
+                                                      0.222    10.836 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
+                         net (fo=1, routed)           0.581    11.416    CPU0/regFile1/AR_reg[7]_3[0]
     SLICE_X1Y22                                                       f  CPU0/regFile1/AR[4]_i_1/I5
-    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.610 f  CPU0/regFile1/AR[4]_i_1/O
-                         net (fo=2, routed)           0.987    12.597    CPU0/ALU1/D[4]
+    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.715 f  CPU0/regFile1/AR[4]_i_1/O
+                         net (fo=2, routed)           0.987    12.702    CPU0/ALU1/D[4]
     SLICE_X2Y22                                                       f  CPU0/ALU1/SR[0]_i_1/I1
-    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.721 r  CPU0/ALU1/SR[0]_i_1/O
-                         net (fo=1, routed)           0.000    12.721    CPU0/Z_flag
+    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.826 r  CPU0/ALU1/SR[0]_i_1/O
+                         net (fo=1, routed)           0.000    12.826    CPU0/Z_flag
     SLICE_X2Y22          FDRE                                         r  CPU0/SR_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -224,11 +224,11 @@ Slack (MET) :             2.431ns  (required time - arrival time)
     SLICE_X2Y22          FDRE (Setup_fdre_C_D)        0.081    15.152    CPU0/SR_reg[0]
   -------------------------------------------------------------------
                          required time                         15.152    
-                         arrival time                         -12.721    
+                         arrival time                         -12.826    
   -------------------------------------------------------------------
-                         slack                                  2.431    
+                         slack                                  2.326    
 
-Slack (MET) :             2.431ns  (required time - arrival time)
+Slack (MET) :             2.326ns  (required time - arrival time)
   Source:                 CPU0/uPC_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            CPU0/SR_reg[0]/D
@@ -236,7 +236,7 @@ Slack (MET) :             2.431ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        7.582ns  (logic 1.913ns (25.230%)  route 5.669ns (74.770%))
+  Data Path Delay:        7.687ns  (logic 2.075ns (26.993%)  route 5.612ns (73.007%))
   Logic Levels:           8  (CARRY4=2 LUT3=1 LUT5=2 LUT6=2 RAMS32=1)
   Clock Path Skew:        -0.033ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.846ns = ( 14.846 - 10.000 ) 
@@ -256,34 +256,34 @@ Slack (MET) :             2.431ns  (required time - arrival time)
                                                       5.139     5.139    
     SLICE_X3Y25          FDRE                         0.000     5.139 r  CPU0/uPC_reg[4]/C
     SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.456     5.595 r  CPU0/uPC_reg[4]/Q
-                         net (fo=43, routed)          1.214     6.810    CPU0/regFile1/ASR_reg[0][4]
+                         net (fo=43, routed)          1.195     6.790    CPU0/regFile1/ASR_reg[0][4]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/I0
-    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.934 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
-                         net (fo=4, routed)           0.819     7.752    CPU0/regFile1/uM[12]
+    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.914 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
+                         net (fo=4, routed)           0.819     7.733    CPU0/regFile1/uM[12]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/I1
-    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.904 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
-                         net (fo=8, routed)           1.174     9.078    CPU0/regFile1/registers_reg_0_15_2_2/A0
-    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_2_2/SP/ADR0
+    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.885 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
+                         net (fo=8, routed)           1.174     9.059    CPU0/regFile1/registers_reg_0_15_1_1/A0
+    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_1_1/SP/ADR0
     SLICE_X2Y20          RAMS32 (Prop_rams32_ADR0_O)
-                                                      0.014     9.092 f  CPU0/regFile1/registers_reg_0_15_2_2/SP/O
-                         net (fo=3, routed)           0.895     9.987    CPU0/regFile1/rData[2]
-    SLICE_X0Y21                                                       f  CPU0/regFile1/i__carry_i_3/I0
-    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.111 r  CPU0/regFile1/i__carry_i_3/O
-                         net (fo=1, routed)           0.000    10.111    CPU0/ALU1/S[2]
-    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[2]
-    SLICE_X0Y21          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398    10.509 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
-                         net (fo=1, routed)           0.000    10.509    CPU0/ALU1/_inferred__0/i__carry_n_0
+                                                      0.024     9.083 f  CPU0/regFile1/registers_reg_0_15_1_1/SP/O
+                         net (fo=3, routed)           0.857     9.940    CPU0/regFile1/rData[1]
+    SLICE_X0Y21                                                       f  CPU0/regFile1/i__carry_i_4/I0
+    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.064 r  CPU0/regFile1/i__carry_i_4/O
+                         net (fo=1, routed)           0.000    10.064    CPU0/ALU1/S[1]
+    SLICE_X0Y21                                                       r  CPU0/ALU1/_inferred__0/i__carry/S[1]
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    10.614 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000    10.614    CPU0/ALU1/_inferred__0/i__carry_n_0
     SLICE_X0Y22                                                       f  CPU0/ALU1/_inferred__0/i__carry__0/CI
     SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    10.731 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
-                         net (fo=1, routed)           0.581    11.311    CPU0/regFile1/AR_reg[7]_3[0]
+                                                      0.222    10.836 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
+                         net (fo=1, routed)           0.581    11.416    CPU0/regFile1/AR_reg[7]_3[0]
     SLICE_X1Y22                                                       f  CPU0/regFile1/AR[4]_i_1/I5
-    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.610 f  CPU0/regFile1/AR[4]_i_1/O
-                         net (fo=2, routed)           0.987    12.597    CPU0/ALU1/D[4]
+    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.715 f  CPU0/regFile1/AR[4]_i_1/O
+                         net (fo=2, routed)           0.987    12.702    CPU0/ALU1/D[4]
     SLICE_X2Y22                                                       f  CPU0/ALU1/SR[0]_i_1/I1
-    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.721 r  CPU0/ALU1/SR[0]_i_1/O
-                         net (fo=1, routed)           0.000    12.721    CPU0/Z_flag
+    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.826 r  CPU0/ALU1/SR[0]_i_1/O
+                         net (fo=1, routed)           0.000    12.826    CPU0/Z_flag
     SLICE_X2Y22          FDRE                                         r  CPU0/SR_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -296,11 +296,11 @@ Slack (MET) :             2.431ns  (required time - arrival time)
     SLICE_X2Y22          FDRE (Setup_fdre_C_D)        0.081    15.152    CPU0/SR_reg[0]
   -------------------------------------------------------------------
                          required time                         15.152    
-                         arrival time                         -12.721    
+                         arrival time                         -12.826    
   -------------------------------------------------------------------
-                         slack                                  2.431    
+                         slack                                  2.326    
 
-Slack (MET) :             2.431ns  (required time - arrival time)
+Slack (MET) :             2.326ns  (required time - arrival time)
   Source:                 CPU0/uPC_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            CPU0/SR_reg[0]/D
@@ -308,7 +308,7 @@ Slack (MET) :             2.431ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        7.582ns  (logic 1.913ns (25.230%)  route 5.669ns (74.770%))
+  Data Path Delay:        7.687ns  (logic 2.075ns (26.993%)  route 5.612ns (73.007%))
   Logic Levels:           8  (CARRY4=2 LUT3=1 LUT5=2 LUT6=2 RAMS32=1)
   Clock Path Skew:        -0.033ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.846ns = ( 14.846 - 10.000 ) 
@@ -328,34 +328,34 @@ Slack (MET) :             2.431ns  (required time - arrival time)
                                                       5.139     5.139    
     SLICE_X3Y25          FDRE                         0.000     5.139 r  CPU0/uPC_reg[4]/C
     SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.456     5.595 r  CPU0/uPC_reg[4]/Q
-                         net (fo=43, routed)          1.214     6.810    CPU0/regFile1/ASR_reg[0][4]
+                         net (fo=43, routed)          1.195     6.790    CPU0/regFile1/ASR_reg[0][4]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/I0
-    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.934 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
-                         net (fo=4, routed)           0.819     7.752    CPU0/regFile1/uM[12]
+    SLICE_X3Y21          LUT5 (Prop_lut5_I0_O)        0.124     6.914 r  CPU0/regFile1/registers_reg_0_15_0_0_i_7/O
+                         net (fo=4, routed)           0.819     7.733    CPU0/regFile1/uM[12]
     SLICE_X3Y21                                                       r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/I1
-    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.904 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
-                         net (fo=8, routed)           1.174     9.078    CPU0/regFile1/registers_reg_0_15_2_2/A0
-    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_2_2/SP/ADR0
+    SLICE_X3Y21          LUT3 (Prop_lut3_I1_O)        0.152     7.885 r  CPU0/regFile1/registers_reg_0_15_0_0_i_3/O
+                         net (fo=8, routed)           1.174     9.059    CPU0/regFile1/registers_reg_0_15_1_1/A0
+    SLICE_X2Y20                                                       r  CPU0/regFile1/registers_reg_0_15_1_1/SP/ADR0
     SLICE_X2Y20          RAMS32 (Prop_rams32_ADR0_O)
-                                                      0.014     9.092 r  CPU0/regFile1/registers_reg_0_15_2_2/SP/O
-                         net (fo=3, routed)           0.895     9.987    CPU0/regFile1/rData[2]
-    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_3/I0
-    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.111 f  CPU0/regFile1/i__carry_i_3/O
-                         net (fo=1, routed)           0.000    10.111    CPU0/ALU1/S[2]
-    SLICE_X0Y21                                                       f  CPU0/ALU1/_inferred__0/i__carry/S[2]
-    SLICE_X0Y21          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398    10.509 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
-                         net (fo=1, routed)           0.000    10.509    CPU0/ALU1/_inferred__0/i__carry_n_0
+                                                      0.024     9.083 r  CPU0/regFile1/registers_reg_0_15_1_1/SP/O
+                         net (fo=3, routed)           0.857     9.940    CPU0/regFile1/rData[1]
+    SLICE_X0Y21                                                       r  CPU0/regFile1/i__carry_i_4/I0
+    SLICE_X0Y21          LUT6 (Prop_lut6_I0_O)        0.124    10.064 f  CPU0/regFile1/i__carry_i_4/O
+                         net (fo=1, routed)           0.000    10.064    CPU0/ALU1/S[1]
+    SLICE_X0Y21                                                       f  CPU0/ALU1/_inferred__0/i__carry/S[1]
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    10.614 f  CPU0/ALU1/_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000    10.614    CPU0/ALU1/_inferred__0/i__carry_n_0
     SLICE_X0Y22                                                       f  CPU0/ALU1/_inferred__0/i__carry__0/CI
     SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    10.731 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
-                         net (fo=1, routed)           0.581    11.311    CPU0/regFile1/AR_reg[7]_3[0]
+                                                      0.222    10.836 f  CPU0/ALU1/_inferred__0/i__carry__0/O[0]
+                         net (fo=1, routed)           0.581    11.416    CPU0/regFile1/AR_reg[7]_3[0]
     SLICE_X1Y22                                                       f  CPU0/regFile1/AR[4]_i_1/I5
-    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.610 f  CPU0/regFile1/AR[4]_i_1/O
-                         net (fo=2, routed)           0.987    12.597    CPU0/ALU1/D[4]
+    SLICE_X1Y22          LUT6 (Prop_lut6_I5_O)        0.299    11.715 f  CPU0/regFile1/AR[4]_i_1/O
+                         net (fo=2, routed)           0.987    12.702    CPU0/ALU1/D[4]
     SLICE_X2Y22                                                       f  CPU0/ALU1/SR[0]_i_1/I1
-    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.721 r  CPU0/ALU1/SR[0]_i_1/O
-                         net (fo=1, routed)           0.000    12.721    CPU0/Z_flag
+    SLICE_X2Y22          LUT5 (Prop_lut5_I1_O)        0.124    12.826 r  CPU0/ALU1/SR[0]_i_1/O
+                         net (fo=1, routed)           0.000    12.826    CPU0/Z_flag
     SLICE_X2Y22          FDRE                                         r  CPU0/SR_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -368,9 +368,9 @@ Slack (MET) :             2.431ns  (required time - arrival time)
     SLICE_X2Y22          FDRE (Setup_fdre_C_D)        0.081    15.152    CPU0/SR_reg[0]
   -------------------------------------------------------------------
                          required time                         15.152    
-                         arrival time                         -12.721    
+                         arrival time                         -12.826    
   -------------------------------------------------------------------
-                         slack                                  2.431    
+                         slack                                  2.326    
 
 
 
