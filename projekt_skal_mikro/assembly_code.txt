@@ -34,6 +34,9 @@ BEQ, LOAD_COL
 ldi, r9, 1B
 CMP, r3, r9
 BEQ, LOAD_COL
+ldi, r9, 2D
+CMP, r3, r9
+BEQ, LOSE
 JMP, KB_INPUT
 
 LOAD_ROW:
@@ -179,7 +182,54 @@ ldi, r14, 0
 CMP, r4, r11
 BNE, MAP_LOOP
 ldi, r15, 1
+
+NEWTILE: 
+ldi, r13,0
+ldi, r14, 4
+ldi, r1, 3 
+ldi, r9, 1C
+CMP,r3,r9
+BEQ, PLACE_TILE
+ldi, r1,0
+ldi, r9, 23
+CMP,r3,r9
+BEQ, PLACE_TILE
+ldi, r14, 1
+ldi, r1,0C
+ldi, r9, 1D
+CMP,r3,r9
+BEQ, PLACE_TILE
+ldi, r1, 0
+ldi, r9, 1B
+CMP,r3,r9
+BEQ, PLACE_TILE
+
+PLACE_TILE:
+ldi,r9, 0
+ld, r5, r1
+cmp, r13, r11
+BEQ, LOSE
+cmp, r5, r9
+BEQ,STORE5
+add,r1,r14
+add,r13,r10
+jmp, PLACE_TILE
+STORE5:
+str, r10,r1
 jmp, INIT_REG
+
+LOSE:
+ldi,r9, 0
+ldi, r15, 0
+ldi,r5, 0
+ldi,r6, 10
+ldi, r7, 0
+LOSE1:
+cmp, r7, r6
+BEQ, INIT_REG
+str, r9, r7
+add,r7,r10
+jmp, LOSE1 
 
 HALT1:
 HALT
