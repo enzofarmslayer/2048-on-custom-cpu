@@ -116,7 +116,7 @@ begin
 	-- 	end if;
 	-- end process;
 
-	K1 <= "00011" when (IR(15 downto 12) = "0000") else  -- K1 = 3 when IR = 0
+	K1 <= "00011" when (IR(15 downto 12) = "0000") and (IR /= "0000000000000000") else  -- K1 = 3 when IR = 0
 	"00110" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
 	"00111" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
 	"01001" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3

@@ -1,7 +1,6 @@
 LDI,r15,0
 
 INIT_REG:
-ldi,r0,0
 ldi,r1,0
 ldi,r2,0
 ldi,r3,0
@@ -21,6 +20,11 @@ str, r10, r10
 
 KB_INPUT:
 IN, r3
+ldi, r9, 10
+add,r0,r10
+cmp,r0,r9
+bne, MAP_LOOP
+ldi, r0,0
 MAP_LOOP:
 ldi, r9, 1C
 CMP, r3, r9
@@ -183,40 +187,33 @@ CMP, r4, r11
 BNE, MAP_LOOP
 ldi, r15, 1
 
-NEWTILE: 
-ldi, r13,0
-ldi, r14, 4
-ldi, r1, 3 
-ldi, r9, 1C
-CMP,r3,r9
-BEQ, PLACE_TILE
-ldi, r1,0
-ldi, r9, 23
-CMP,r3,r9
-BEQ, PLACE_TILE
-ldi, r14, 1
-ldi, r1,0C
-ldi, r9, 1D
-CMP,r3,r9
-BEQ, PLACE_TILE
-ldi, r1, 0
-ldi, r9, 1B
-CMP,r3,r9
-BEQ, PLACE_TILE
-
-PLACE_TILE:
-ldi,r9, 0
-ld, r5, r1
-cmp, r13, r11
-BEQ, LOSE
-cmp, r5, r9
-BEQ,STORE5
-add,r1,r14
-add,r13,r10
-jmp, PLACE_TILE
-STORE5:
-str, r10,r1
-jmp, INIT_REG
+NEWTILE:
+ldi, r6, 0            
+add, r0, r10          
+ldi, r9, 0F         
+cmp, r0, r9
+bne, NEWTILE_START    
+ldi, r0, 0            
+NEWTILE_START:
+mov, r1, r0        
+ldi, r13, 0         
+FIND_EMPTY:
+ld, r5, r1            
+cmp, r5, r6        
+beq, PLACE_1         
+add, r1, r10        
+cmp, r1, r9          
+bne, SKIP_WRAP
+ldi, r1, 0           
+SKIP_WRAP:
+add, r13, r10     
+cmp, r13, r9         
+bne, FIND_EMPTY    
+jmp, LOSE         
+PLACE_1:
+str, r10, r1          
+ldi, r14, 0         
+jmp, INIT_REG        
 
 LOSE:
 ldi,r9, 0
