@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;               -- IEEE library for the unsigned type
                                         -- and various arithmetic operations
 
 -- entity
-entity vga_lab is
+entity Construction is
 	port (
 		clk      : in std_logic;                         -- system clock
 		btnC     : in std_logic;                         -- reset
@@ -16,11 +16,11 @@ entity vga_lab is
 		vgaBlue  : out std_logic_vector(3 downto 0);     -- VGA blue
 		PS2Clk  : in std_logic;                  -- PS2 clock
 		PS2Data : in std_logic);                 -- PS2 data
-end vga_lab;
+end Construction;
 
 
 -- architecture
-architecture Behavioral of VGA_lab is
+architecture Behavioral of Construction is
 	
 	-- PS2 keyboard encoder component
 	component kbd_enc
@@ -32,19 +32,8 @@ architecture Behavioral of VGA_lab is
 			ScanCode        : out std_logic_vector(7 downto 0); -- scancode byte
 			make_op         : out std_logic);                   -- one-pulsed scancode-enable
 	end component;
-	
-    --     -- pretended CPU
-	-- component pret_cpu is
-	-- 	port (
-	-- 		clk      : in std_logic;   -- system clock (100 MHz)
-	-- 		rst      : in std_logic;   -- reset signal
-	-- 		ScanCode : in std_logic_vector(7 downto 0);   -- scancode byte
-	-- 		make_op  : in std_logic;                      -- one-pulsed scancode-enable
-	-- 		data     : out std_logic_vector(3 downto 0);  -- tile data
-	-- 		addr     : out unsigned(3 downto 0);         -- tile address
-	-- 		we       : out std_logic);                    -- write enable
-	-- end component;
 
+	-- CPU component
 	component uprogCPU is
 		port (
 			clk        : in std_logic;             -- system clock (100 MHz)
@@ -89,11 +78,11 @@ architecture Behavioral of VGA_lab is
 			Vsync    : out std_logic);
 	end component;
 	
-	-- intermediate signals between KBD_ENC and PRETENDED_CPU
+	-- intermediate signals between KBD_ENC and CPU
 	signal ScanCode : std_logic_vector(7 downto 0);
 	signal make_op : std_logic;
 	
-	-- intermediate signals between PRETENDED_CPU and VIDEO_RAM
+	-- intermediate signals between CPU and VIDEO_RAM
 	signal data_s : std_logic_vector(3 downto 0); -- data
 	signal addr_s : unsigned(3 downto 0);        -- address
 	signal we_s   : std_logic;                    -- write enable
@@ -107,10 +96,8 @@ begin
 	
 	-- keyboard encoder component connection
 	KBD_ENC0 : kbd_enc port map(clk=>clk, rst=>btnC, PS2KeyboardCLK=>PS2Clk, PS2KeyboardData=>PS2Data, ScanCode=>ScanCode, make_op=>make_op);
-	
-	-- pretended cpu component connection
-	--U1 : pret_cpu port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, data=>data_s, addr=>addr_s, we=>we_s);
-	
+
+	-- CPU component connection
 	CPU0 : uprogCPU port map(clk=>clk, rst=>btnC, ScanCode=>ScanCode, make_op=>make_op, vram_in=>vram_to_cpu, data_out=>data_s, addr_out=>addr_s, weCPU=>we_s);
 
 	-- picture memory component connection

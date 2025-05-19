@@ -24,7 +24,6 @@ begin
   begin
       if rising_edge(clk) then
           if (we = '1') then
-              -- Write operation: store wData to the register at addr
               registers(to_integer(addr)) <= wData;
           end if;
       end if;

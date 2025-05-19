@@ -1,6 +1,6 @@
--- * Read bytes from a PS2 bus
--- * Encode bytes into scancodes
--- * Does not handle scancodes containing "E0" or "E1" bytes.
+-- Read bytes from a PS2 bus
+-- Encode bytes into scancodes
+-- Does not handle scancodes containing "E0" or "E1" bytes.
 
 -- library declaration
 library IEEE;
@@ -63,14 +63,7 @@ begin
 	
 	PS2Clk_op <= (not PS2Clk_Q1) and (not PS2Clk_Q2);
 	
-
 	-- PS2 data shift register
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2Data_sr                     *
-	-- *                                 *
-	-- ***********************************
 	process(clk) begin
 		if rising_edge(clk) then
 			if rst = '1' then
@@ -85,12 +78,6 @@ begin
 	ScanCode <= ScanCode_int;  -- för utsignal
 
 	-- PS2 bit counter
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2BitCounter & BC11           *
-	-- *                                 *
-	-- ***********************************
 	process(clk) begin
 		if rising_edge(clk) then
 			if rst = '1' then
@@ -107,19 +94,10 @@ begin
 			end if;
 		end if;
 	end process;
-	
-	--BC11 <= '1' when PS2BitCounter = 10 else '0'; -- 
 
-        -- PS2 state
+    -- PS2 state
 	-- Either MAKE or BREAK state is identified from the scancode
 	-- Only single character scan codes are identified
-	-- The behavior of multiple character scan codes is undefined
-	-- ***********************************
-	-- *                                 *
-	-- *  VHDL for :                     *
-	-- *  PS2State                       *
-	-- *                                 *
-	-- ***********************************
 	process(clk) begin
 		if rising_edge(clk) then
 			if rst = '1' then

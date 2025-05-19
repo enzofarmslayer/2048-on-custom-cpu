@@ -1,15 +1,14 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity vga_lab_tb is
-end entity vga_lab_tb;
+entity Construction_tb is
+end entity Construction_tb;
 
-architecture behavior of vga_lab_tb is
+architecture behavior of Construction_tb is
 
     -- Component Declaration for the Unit Under Test (UUT)
-    component vga_lab
+    component Construction
         port (
             clk      : in std_logic;
             btnC     : in std_logic;
@@ -39,7 +38,7 @@ architecture behavior of vga_lab_tb is
     -- Clock generation
     constant clk_period : time := 10 ns;
 
-    constant PS2_HALF_PERIOD : time := 10 ns;         -- 20 kHz ≈ 50 µs total
+    constant PS2_HALF_PERIOD : time := 10 ns;         
     type bit_array is array (natural range <>) of std_logic;
 
     -- 0x1C  = 0001_1100  →  LSb-first: 0 0 1 1 1 0 0 0
@@ -53,7 +52,7 @@ architecture behavior of vga_lab_tb is
 begin
 
     -- Instantiate the Unit Under Test (UUT)
-    uut: vga_lab
+    uut: Construction
         port map (
             clk => clk,
             btnC => btnC,

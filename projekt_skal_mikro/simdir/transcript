@@ -1,4 +1,4 @@
-# //  ModelSim SE-64 2021.3 Jul 13 2021 Linux 4.18.0-553.51.1.el8_10.x86_64
+# //  ModelSim SE-64 2021.3 Jul 13 2021 Linux 4.18.0-553.52.1.el8_10.x86_64
 # //
 # //  Copyright 1991-2021 Mentor Graphics Corporation
 # //  All Rights Reserved.
@@ -11,15 +11,16 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# vsim -voptargs="+acc" -L work work.vga_lab_tb 
-# Start time: 20:48:02 on May 10,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# vsim -voptargs="+acc" -L work work.Construction_tb 
+# Start time: 12:25:28 on May 19,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "KBD_ENC(behavioral)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.vga_lab_tb(behavior)#1
-# Loading work.vga_lab(behavioral)#1
+# Loading work.construction_tb(behavior)#1
+# Loading work.construction(behavioral)#1
 # Loading work.kbd_enc(behavioral)#1
 # Loading work.uprogcpu(func)#1
 # Loading work.umem(behavioral)#1
@@ -29,79 +30,5 @@
 # Loading work.video_ram(behavioral)#1
 # Loading work.vga_motor(behavioral)#1
 # Loading work.char_rom(behavioral)#1
-add wave -r sim:/vga_lab_tb/*
-run 50000 ns
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/VGA_MOTOR0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0/ALU1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0/regFile1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0/pMem1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0/uMem1
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."/=": metavalue detected, returning TRUE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 0  Instance: /vga_lab_tb/uut/CPU0
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 1  Instance: /vga_lab_tb/uut/CPU0/pMem1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 5 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 15 ns  Iteration: 1  Instance: /vga_lab_tb/uut/VGA_MOTOR0/CHAR_ROM1
-# End time: 21:04:31 on May 10,2025, Elapsed time: 0:16:29
-# Errors: 0, Warnings: 36
+# End time: 12:25:31 on May 19,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

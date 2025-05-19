@@ -10,7 +10,6 @@ ARCHITECTURE func OF uprogCPU_tb IS
   --Component Declaration for the Unit Under Test (UUT)
   COMPONENT uprogCPU
   PORT(clk : IN std_logic;
-       --btnC : IN std_logic); -- reset, active high
   );
   END COMPONENT;
 
@@ -25,7 +24,6 @@ BEGIN
   -- Instantiate the Unit Under Test (UUT)
   uut: uprogCPU PORT MAP (
     clk => clk
-    --btnC => rst
   );
 		
   -- Clock process definitions

@@ -5,20 +5,17 @@ use IEEE.NUMERIC_STD.ALL;
 --CPU interface
 entity uprogCPU is
   port(clk: in std_logic;
-  		rst : in std_logic;   -- reset signal
-  		--btnC : in std_logic     -- reset button (middle of the five), active high
-		ScanCode   : in std_logic_vector(7 downto 0);  -- scancode byte
-		make_op    : in std_logic;                   -- one-pulsed scancode-enable
+  		rst : in std_logic;                               -- reset signal
+		ScanCode   : in std_logic_vector(7 downto 0);     -- scancode byte
+		make_op    : in std_logic;                   	  -- one-pulsed scancode-enable
 		data_out     : out std_logic_vector(3 downto 0);  -- tile data
-		addr_out     : out unsigned(3 downto 0);         -- tile address
-		weCPU       : out std_logic;              -- write enable
-		vram_in : in std_logic_vector(3 downto 0)
+		addr_out     : out unsigned(3 downto 0);          -- tile address
+		weCPU       : out std_logic;              		  -- write enable
+		vram_in : in std_logic_vector(3 downto 0)         --
 	);
 end entity;
 
 architecture func of uprogCPU is
-
-	--signal rst : std_logic;       -- synchronous clear
 
 	-- micro Memory component
 	component uMem
@@ -35,10 +32,10 @@ architecture func of uprogCPU is
 	-- reg file
 	component regFile
 		port (clk     : in  std_logic;
-		  we      : in  std_logic;                  -- Write enable
+		  we      : in  std_logic;                 -- Write enable
 		  addr   : in  unsigned(3 downto 0);       -- Read/Write address
-		  wData   : in  unsigned(7 downto 0);       -- Data to write
-		  rData   : out unsigned(7 downto 0)        -- Data read
+		  wData   : in  unsigned(7 downto 0);      -- Data to write
+		  rData   : out unsigned(7 downto 0)       -- Data to read
 		);
 	end component;
 
@@ -56,12 +53,12 @@ architecture func of uprogCPU is
 
 
 	-- micro memory signals 
-	signal uM : unsigned(22 downto 0); -- micro Memory output
-	alias ALU_opcode : unsigned(3 downto 0) is uM(22 downto 19);
+	signal uM : unsigned(22 downto 0); 								-- Micro Memory output
+	alias ALU_opcode : unsigned(3 downto 0) is uM(22 downto 19);	
 	alias TB : unsigned(2 downto 0) is uM(18 downto 16);
 	alias FB : unsigned(2 downto 0) is uM(15 downto 13);
-	alias S : std_logic is uM(12); -- Switch for register file
-	alias PCsig : std_logic is uM(11);  -- (0:PC=PC, 1:PC++)
+	alias S : std_logic is uM(12); 									-- Switch for register file
+	alias PCsig : std_logic is uM(11);  							-- (0:PC=PC, 1:PC++)
 	alias SEQ : unsigned(3 downto 0) is uM(10 downto 7); 
 	alias uAddr : unsigned(6 downto 0) is uM(6 downto 0);
 
@@ -75,19 +72,19 @@ architecture func of uprogCPU is
 	signal r_wData : unsigned (7 downto 0);
 
 	-- local registers
-	signal uPC : unsigned(5 downto 0); -- micro Program Counter
-	signal PC : unsigned(15 downto 0); -- Program Counter
-	signal IR : unsigned(15 downto 0); -- Instruction Register
-	signal ASR : unsigned(15 downto 0); -- Address Register
-	signal AR : unsigned(7 downto 0); -- akumelator register
+	signal uPC : unsigned(5 downto 0); 		-- micro Program Counter
+	signal PC : unsigned(15 downto 0); 		-- Program Counter
+	signal IR : unsigned(15 downto 0); 		-- Instruction Register
+	signal ASR : unsigned(15 downto 0); 	-- Address Register
+	signal AR : unsigned(7 downto 0); 		-- Akumelator register
 	
 	signal SR  : std_logic_vector(7 downto 0);  -- Status-register (bit 0 = Z, bit 1 = N)
-	alias Zf : std_logic is SR(0);
+	alias Zf : std_logic is SR(0);	
 	alias Nf : std_logic is SR(1);
 
 	-- local combinatorials
 	signal DATA_BUS : unsigned(15 downto 0); -- Data Bus
-	signal K1 : unsigned(4 downto 0); 
+	signal K1 : unsigned(4 downto 0); -- K1(LUT/ROM??)
 
 	-- SR signals
 	signal Z_flag, N_flag : std_logic;   
@@ -95,28 +92,20 @@ architecture func of uprogCPU is
 	-- alu result
 	signal alu_result : unsigned(7 downto 0);  
 
-	-- signals for IN
+	-- signals for "IN" register and flag
 	signal read_scancode_flag : std_logic := '0';
+	signal IN_reg : unsigned(7 downto 0);
 
 	-- signals for addresdecoder
-	signal vram_sel  : std_logic := '0';                  -- ‘1’ - ASR in 0-15
-	signal pm_addr   : unsigned(15 downto 0);      -- feed pMem only when ≠VRAM
+	signal vram_sel  : std_logic := '0';                  -- ‘1’ - ASR is 0-15
+	signal pm_addr   : unsigned(15 downto 0);      
 
 	-- HALT switch
 	signal halt_switch : std_logic := '0';
 
-	signal scan_reg : unsigned(7 downto 0);
-
-
 begin
-	-- process(clk)
-	-- begin
-	-- 	if rising_edge(clk) then
-	-- 		rst <= btnC; -- syncronize the reset signal
-	-- 	end if;
-	-- end process;
 
-	K1 <= "00011" when (IR(15 downto 12) = "0000") and (IR /= "0000000000000000") else  -- K1 = 3 when IR = 0
+	K1 <= "00011" when (IR(15 downto 12) = "0000") and (IR /= "0000000000000000") else  -- K1 = 3 when IR = 0 and IR is not all 0es
 	"00110" when (IR(15 downto 12) = "0001") else  -- K1 = 5 when IR = 1
 	"00111" when (IR(15 downto 12) = "0010") else  -- K1 = 6 when IR = 2
 	"01001" when (IR(15 downto 12) = "0011") else  -- K1 = 8 when IR = 3
@@ -126,7 +115,7 @@ begin
 	"01111" when (IR(15 downto 12) = "0111") else  -- K1 = 14 when IR = 7
 	"10001" when (IR(15 downto 12) = "1000") else  -- K1 = 16 when IR = 8
 	"10010" when (IR(15 downto 12) = "1001") else  -- K1 = 17 when IR = 9
-	"10011" when (IR(15 downto 12) = "1010") else	   -- K1 = 18 when IR = 10
+	"10011" when (IR(15 downto 12) = "1010") else  -- K1 = 18 when IR = 10
 	"00000";                             
 
 	-- mPC : micro Program Counter
@@ -165,24 +154,23 @@ begin
 	
 
 	-- PC : Program Counter 
-	-- should start att 16 according to adressdecoder
 	process(clk)
 	begin
 		if rising_edge(clk) then
 			if (rst = '1') then
-				PC <= to_unsigned(16, PC'length);  -- Reset PC on reset signal
-			elsif (halt_switch = '0') then  -- Check if CPU is halted
+				PC <= to_unsigned(16, PC'length);  -- Reset PC on reset signal, should start at 16 according to adressdecoder
+			elsif (halt_switch = '0') then         -- Check if CPU is halted
 				if (PCsig = '1') then
-					PC <= PC + 1;  -- Increment PC if not halted
+					PC <= PC + 1;  
 				elsif (FB = "011") then
-					PC <= DATA_BUS;  -- Update PC from the data bus if not halted
+					PC <= DATA_BUS;  
 				end if;
 			end if;
 		end if;
 	end process;
 	
 
-	-- IR : Instruction Register
+	-- IR 
 	process(clk)
 	begin
 		if rising_edge(clk) then
@@ -194,10 +182,11 @@ begin
 		end if;
 	end process;
 
+	-- Address decoder singals 			
 	vram_sel <= '1' when ASR(15 downto 4) = "000000000000" else '0';
 	pm_addr <= ASR - to_unsigned(16, ASR'length) when ASR(15 downto 4) /= "000000000000" else (others => '0');
 
-	-- ASR : Address Register
+	-- ASR 
 	process(clk)
 	begin
 		if rising_edge(clk) then
@@ -209,7 +198,7 @@ begin
 		end if;
 	end process;
 
-	-- SR : Status-register (latches Z and N flags every cycle)
+	-- SR (latches Z and N flags every cycle)
 	process(clk)
 	begin
 	if rising_edge(clk) then
@@ -235,7 +224,7 @@ begin
 		end if;
 	end process;
 
-	-- IN and flag reg
+	-- IN register and flag 
 	process(clk)
     begin
         if rising_edge(clk) then
@@ -243,23 +232,22 @@ begin
                 read_scancode_flag <= '0';
             elsif make_op = '1' and read_scancode_flag = '0' then
                 read_scancode_flag <= '1';
-				scan_reg <= unsigned(ScanCode);
+				IN_reg <= unsigned(ScanCode);
             elsif read_scancode_flag = '1' then
 				if (TB = "111") then
                 	read_scancode_flag <= '0';  -- Reset the flag after reading the scancode
-					scan_reg <= (others => '0');
+					IN_reg <= (others => '0');
 				end if;
             end if;
         end if;
     end process;
 
 	--signals for regfile 
-	r_we <= '1' when (FB = "100") else '0';  -- Enable write when FB = "001", else disable it
-	--r_addr <= IR(11 downto 8) when (FB = "100") else "0000";
+	r_we <= '1' when (FB = "100") else '0';  
 	r_addr <= IR(11 downto 8) when S = '0' else IR(3 downto 0);
 	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');
 	
-	-- out signals (to video ram)
+	-- OUT signals (to video ram)
 	addr_out <= ASR(3 downto 0) when vram_sel = '1' and (FB = "101" or TB = "010") else (others => '0');
 	data_out <= std_logic_vector(DATA_BUS(3 downto 0)) when (FB = "101") else (others => '0');
 	weCPU <= '1' when vram_sel = '1' and FB = "101" and IR(15 downto 12) = "0010" else '0';
@@ -281,10 +269,9 @@ begin
 		PM when (TB = "010" and vram_sel = '0')  else
 		"000000000000" & unsigned(vram_in) when (TB = "010" and vram_sel = '1') else
 		PC when (TB = "011") else
-		--ASR when (TB = "100") else
-		"00000000" & r_rData when (TB = "101") else -- GRx till databuss
+		"00000000" & r_rData when (TB = "101") else 
 		"00000000" & AR when (TB = "100") else
-		"00000000" & scan_reg when (TB = "111" and read_scancode_flag = '1') else
+		"00000000" & IN_reg when (TB = "111" and read_scancode_flag = '1') else
 		(others => '0');
 
 end architecture;
