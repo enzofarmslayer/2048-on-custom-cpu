@@ -8,8 +8,7 @@ entity uprogALU is
         rData   : in  unsigned(7 downto 0);  -- value from the register file
         AR_in   : in  unsigned(7 downto 0);  -- current accumulator contents
         AR_out  : out unsigned(7 downto 0);  -- pure combinational result
-        Z_flag  : out std_logic;
-        N_flag  : out std_logic
+        Z_flag  : out std_logic
     );
 end entity;
 

@@ -46,8 +46,7 @@ architecture func of uprogCPU is
         rData   : in unsigned(7 downto 0);
         AR_in   : in unsigned(7 downto 0);
 		AR_out 	: out unsigned(7 downto 0);
-        Z_flag  : out std_logic;
-        N_flag  : out std_logic
+        Z_flag  : out std_logic
     );
 	end component;
 
@@ -86,7 +85,7 @@ architecture func of uprogCPU is
 	signal K1 : unsigned(4 downto 0); -- K1(LUT/ROM??)
 
 	-- SR signals
-	signal Z_flag, N_flag : std_logic;   
+	signal Z_flag std_logic;   
 
 	-- alu result
 	signal alu_result : unsigned(7 downto 0);  
@@ -259,7 +258,7 @@ begin
 	regFile1 : regFile port map(clk=>clk, we=>r_we, addr=>r_addr, wData=>r_wData, rData=>r_rData);
 
 	-- ALU component connection
-	ALU1 : uprogALU port map(opcode=>ALU_opcode, rData=>r_rData, AR_in=>AR, AR_out=>alu_result, Z_flag=>Z_flag, N_flag=>N_flag);
+	ALU1 : uprogALU port map(opcode=>ALU_opcode, rData=>r_rData, AR_in=>AR, AR_out=>alu_result, Z_flag=>Z_flag);
 
 	-- data bus assignment
 	DATA_BUS <= "00000000" & IR(7 downto 0) when (TB = "001") else
