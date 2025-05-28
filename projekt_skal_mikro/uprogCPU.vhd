@@ -78,9 +78,8 @@ architecture func of uprogCPU is
 	signal ASR : unsigned(15 downto 0); 	-- Address Register
 	signal AR : unsigned(7 downto 0); 		-- Akumelator register
 	
-	signal SR  : std_logic_vector(7 downto 0);  -- Status-register (bit 0 = Z, bit 1 = N)
-	alias Zf : std_logic is SR(0);	
-	alias Nf : std_logic is SR(1);
+	signal SR  : std_logic_vector(7 downto 0);  -- Status-register
+	alias Zf : std_logic is SR(0);	-- bit 0 = Z
 
 	-- local combinatorials
 	signal DATA_BUS : unsigned(15 downto 0); -- Data Bus
@@ -198,18 +197,16 @@ begin
 		end if;
 	end process;
 
-	-- SR (latches Z and N flags every cycle)
+	-- SR (latches Z
 	process(clk)
 	begin
-	if rising_edge(clk) then
-		if rst = '1' then
-		SR <= (others => '0');
-		else
-		SR(0) <= Z_flag;           -- Z-flag from ALU
-		SR(1) <= N_flag;           -- N-flag from ALU
-		-- remaining bits reserved for future use
+		if rising_edge(clk) then
+			if rst = '1' then
+				SR <= (others => '0');
+			else
+				SR(0) <= Z_flag;           -- Z-flag from ALU
+			end if;
 		end if;
-	end if;
 	end process;
 	
 	-- AR
@@ -242,7 +239,7 @@ begin
         end if;
     end process;
 
-	--signals for regfile 
+	--signals to regfile 
 	r_we <= '1' when (FB = "100") else '0';  
 	r_addr <= IR(11 downto 8) when S = '0' else IR(3 downto 0);
 	r_wData <= DATA_BUS(7 downto 0) when (FB = "100") else (others => '0');

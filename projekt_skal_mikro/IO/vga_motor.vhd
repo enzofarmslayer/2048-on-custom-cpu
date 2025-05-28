@@ -22,8 +22,8 @@ end vga_motor;
 -- architecture
 architecture Behavioral of vga_motor is
 	
-	signal Xpixel1, Xpixel2 : unsigned(9 downto 0); -- Horizontal pixel counter, and its pipelined version
-	signal Ypixel1, Ypixel2 : unsigned(9 downto 0); -- Vertical pixel counter
+	signal Xpixel1 : unsigned(9 downto 0); -- Horizontal pixel counter, and its pipelined version
+	signal Ypixel1 : unsigned(9 downto 0); -- Vertical pixel counter
 	signal ClkDiv : unsigned(1 downto 0);          -- Clock divisor, to generate 25 MHz signal
 	signal Clk25  : std_logic;                     -- One pulse width 25 MHz signal
 	
@@ -78,12 +78,14 @@ begin
 				pixel_counter_x <= (others => '0');
 				SpriteX_tmp <= (others => '0');
 			elsif Clk25 = '1' then
+				
 				if Xpixel1 = 799 then
 					Xpixel1 <= (others => '0'); 
 					pixel_counter_x <= (others => '0');
 				else
 					Xpixel1 <= Xpixel1 + 1; 
 				end if;
+				
 				if Xpixel1 < 640 then
 					if pixel_counter_x = 9 then
 						pixel_counter_x <= (others => '0');
@@ -137,27 +139,23 @@ begin
 
 	blank1 <= '0' when (Xpixel1 < 640 and Ypixel1 < 480) else '1';
 
-	-- Video ram address composite
-	--VR_addr <= to_unsigned(10, 7) * Ypixel1(9 downto 6) + Xpixel1(9 downto 6);
-	--VR_addr <= to_unsigned(20, 7) * Ypixel1(8 downto 5) + Xpixel1(9 downto 5);
-
-	process(Xpixel2, Ypixel2)
+	process(Xpixel1, Ypixel1)
 	begin
-		if to_integer(Xpixel2) < 160 then
+		if to_integer(Xpixel1) < 160 then
 			TileX <= "00";
-		elsif to_integer(Xpixel2) < 320 then
+		elsif to_integer(Xpixel1) < 320 then
 			TileX <= "01";
-		elsif to_integer(Xpixel2) < 480 then
+		elsif to_integer(Xpixel1) < 480 then
 			TileX <= "10";
 		else
 			TileX <= "11";
 		end if;
 
-		if to_integer(Ypixel2) < 120 then
+		if to_integer(Ypixel1) < 120 then
 			TileY <= "00";
-		elsif to_integer(Ypixel2) < 240 then
+		elsif to_integer(Ypixel1) < 240 then
 			TileY <= "01";
-		elsif to_integer(Ypixel2) < 360 then
+		elsif to_integer(Ypixel1) < 360 then
 			TileY <= "10";
 		else
 			TileY <= "11";
@@ -175,8 +173,6 @@ begin
 			blank2 <= blank1;
 			Hsync2 <= Hsync1;
 			Vsync2 <= Vsync1;
-			Xpixel2 <= Xpixel1;
-			Ypixel2 <= Ypixel1;
 			SpriteX <= SpriteX_tmp;
 			SpriteY <= SpriteY_tmp;
 		end if;

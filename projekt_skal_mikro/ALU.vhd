@@ -35,5 +35,4 @@ begin
 
     -- Z and N flags based on alu_result
     Z_flag <= '1' when alu_result = 0 else '0';
-    N_flag <= alu_result(7);  -- MSB = sign bit
 end architecture;
