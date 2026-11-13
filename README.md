@@ -1,6 +1,6 @@
 # 2048 on a custom CPU
 
-A microprogrammed CPU designed in VHDL for the Digilent Basys3 FPGA board, running the game 2048 written in the CPU's own assembly language. Built as the group project in the course TSEA83 (Datorkonstruktion) at Linköping University (2025).
+A microprogrammed CPU designed in VHDL for the Digilent Basys3 FPGA board, running the game 2048 written in the CPU's own assembly language. 
 
 ## What's in it
 
